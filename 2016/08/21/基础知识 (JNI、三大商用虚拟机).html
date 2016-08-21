@@ -89,12 +89,12 @@
 在Java编程语言和环境中，即时编译器(JIT compiler，just-in-time compiler)是一个把Java的字节码(包括需要被解释的指令的程序)转换成可以直接发送给处理器的指令的程序。当你写好一个Java程序后，源语言的语句将由Java编译器编译成字节码，而不是编译成与某个特定的处理器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JIT编译器(虚拟机)">
-<meta property="og:url" content="http://yoursite.com/2016/08/21/基础知识 (JNI、三大商用虚拟机)/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/08/21/基础知识 (JNI、三大商用虚拟机).html">
 <meta property="og:site_name" content="付俊豪GitHub博客">
 <meta property="og:description" content="JIT编译器，英文写作Just-In-Time Compiler，中文意思是即时编译器.
 
 在Java编程语言和环境中，即时编译器(JIT compiler，just-in-time compiler)是一个把Java的字节码(包括需要被解释的指令的程序)转换成可以直接发送给处理器的指令的程序。当你写好一个Java程序后，源语言的语句将由Java编译器编译成字节码，而不是编译成与某个特定的处理器">
-<meta property="og:updated_time" content="2016-08-21T04:49:58.333Z">
+<meta property="og:updated_time" content="2016-08-21T04:59:47.087Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JIT编译器(虚拟机)">
 <meta name="twitter:description" content="JIT编译器，英文写作Just-In-Time Compiler，中文意思是即时编译器.
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/08/21/基础知识 (JNI、三大商用虚拟机)/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/08/21/基础知识 (JNI、三大商用虚拟机).html"/>
 
   <title> JIT编译器(虚拟机) | 付俊豪GitHub博客 </title>
 </head>
@@ -260,6 +260,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -290,8 +309,8 @@
 <p>事实上，JIT编译器分成两种:经济编译器和普通编译器。</p>
 </blockquote>
 <p>折叠 经济JIT编译器<br>经济JIT编译器代表了运行一个.NET应用程序所需要的最少功能，它直接用对等的本机代码取代每一条MSIL指令，不进行任何优化从而也带来更少的系统负载。这也意味着它主要应用在内存等资源比较紧张的平台上。<br>折叠 普通JIT编译器<br>普通JIT编译器则是缺省的运行时配置，它会对其产生的代码进行即时优化。这样做无形中给予了.NET超出传统预编译语言的一个优点:预编译语言只能对其处理的代码将要运行于其上的平台做一番大致的事前估计。<br>JIT编译器可以经过准确调节达到当前运行时状态，结果可以完成一些预编译语言无法完成的工作:更高效地利用和分配CPU寄存器。在适当的情况下实施低级代码优化，比如常量重叠、拷贝复制、取消范围检查、取消常规副表达式以及方法内联等</p>
-<blockquote>
 <p>在代码执行期间监控当前的物理和虚拟内存需求从而更高效地利用内存<br>产生特定的平台指令以准确、充分地利用实际的处理器模式<br>NET编译的结果就是JIT所带来的额外负载要求并没有产生显著的性能损失。<br>折叠 Java中的JIT</p>
+<blockquote>
 <p>JIT Compiler(Just-in-time Compiler) 即时编译</p>
 </blockquote>
 <p>最早的Java建置方案是由一套转译程式(interpreter)，将每个Java指令都转译成对等的微处理器指令，并根据转译后的指令先后次序依序执行，由于一个Java指令可能被转译成十几或数十几个对等的微处理器指令，这种模式执行的速度相当缓慢。 针对这个问题，业界首先开发出JIT(just in time)编译器。当Java执行runtime环境时，每遇到一个新的类别(class:类别是Java程式中的功能群组)，类别是Java程式中的功能群组-JIT编译器在此时就会针对这个类别进行编译(compile)作业。经过编译后的程式，被优化成相当精简的原生型指令码(native code)，这种程式的执行速度相当快。花费少许的编译时间来节省稍后相当长的执行时间，JIT这种设计的确增加不少效率，但是它并未达到最顶尖的效能，因为某些极少执行到的Java指令在编译时所额外花费的时间可能比转译器在执行时的时间还长，针对这些指令而言，整体花费的时间并没有减少。 基于对JIT的经验，业界发展出动态编译器(dynamic compiler)，动态编译器仅针对较常被执行的程式码进行编译，其余部分仍使用转译程式来执行。也就是说，动态编译器会研判是否要编译每个类别。动态编译器拥有两项利器:一是转译器，另一则是JIT，它透过智慧机制针对每个类别进行分析，然后决定使用这两种利器的哪一种来达到最佳化的效果。动态编译器针对程式的特性或者是让程式执行几个循环，再根据结果决定是否编译这段程式码。这个决定不见得绝对正确，但从统计数字来看，这个判断的机制正确的机会相当高。事实上，动态编译器会根据「历史资料」做决策，所以程式执行的时间愈长，判断正确的机率就愈高。以整个结果来看，动态编译器产生的程式码执行的速度超越以前的JIT技术，平均速度可提高至50%。</p>
@@ -324,7 +343,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/21/hello-world/" rel="next" title="欢迎！">
+              <a href="/2016/08/21/hello-world.html" rel="next" title="欢迎！">
                 <i class="fa fa-chevron-left"></i> 欢迎！
               </a>
             
@@ -403,6 +422,13 @@
             </a>
           </div>
 
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
           
 
           
