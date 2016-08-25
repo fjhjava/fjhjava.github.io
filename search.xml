@@ -4,6 +4,14 @@
   
     
     <entry>
+      <title><![CDATA[Scala简介]]></title>
+      <url>http://yoursite.com/2016/08/25/Scala%E7%AE%80%E4%BB%8B.html</url>
+      <content type="html"><![CDATA[<p>Scala语言，函数式编程语言。</p>
+<p>一、安装Scala语言<br>    前往scala官网下载对应的系统版本，我的是windows7 64位系统<br>    下载好scala-2.11.8.msi,直接点击安装。<br>    一路下去Next…<br>二、基础语法<br>    值引用透明，完美的分布式编程语言。</p>
+<a id="more"></a>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[JIT编译器(虚拟机)]]></title>
       <url>http://yoursite.com/2016/08/21/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%20(JNI%E3%80%81%E4%B8%89%E5%A4%A7%E5%95%86%E7%94%A8%E8%99%9A%E6%8B%9F%E6%9C%BA).html</url>
       <content type="html"><![CDATA[<blockquote>
