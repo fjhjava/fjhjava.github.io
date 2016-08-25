@@ -4,6 +4,24 @@
   
     
     <entry>
+      <title><![CDATA[使用Genymotion代替原生模拟器]]></title>
+      <url>http://yoursite.com/2016/08/25/%E4%BD%BF%E7%94%A8Genymotion%E4%BB%A3%E6%9B%BF%E5%8E%9F%E7%94%9F%E6%A8%A1%E6%8B%9F%E5%99%A8.html</url>
+      <content type="html"><![CDATA[<p>用过Eclipse开发的Android工程师都知道原生的模拟器非常NB啊，每次出场就跟古代的大姑娘上轿一样，要先打扮好，然后迈着三寸金莲慢慢悠悠出来，实在受不了了，所以干脆找个可替代的产品吧，想起前阵子在微博上看到的Genymotion，于是今天就直接用上了，果断速度杠杠滴啊，写android的小伙伴们可以果断走起了，注意：mac下写android的小伙伴要耐心点儿，如果你升级了10.9的话，会有意想不到的兼容性问题发生，本人血的教训已经可以足够作为证明了。<br>准备工作<br>首先到Genymotion官网上注册一个账号，传送门在此，注意，该账号并非只用于下载所需程序，还会在你新建不同的Devices时要用到，所以要记牢。注册完账号之后，登录，然后就可以直接到下载页面（下载传送门在此）去下载你所需要的东西了，基本上我们需要如下的几个程序或者插件：<br>VirtualBox(win系统下Genymotion官方有Genymotion Installer With VirtualBox版本的，可直接下载，mac osx或者Linux系统需要单独安装VirtualBox)<br>Genymotion Installer<br><a id="more"></a><br>当然，还需要额外的Eclipse或者IntelliJ IDEA的插件，这个可以下载完再安装，也可以直接在线安装。<br>准备就绪之后就开始一路next安装完Genymotion Installer，然后打开Genymotion程序，如下图：<br>[图片]</p>
+<p>点击Settings，指定下你的android的SDK位置，我自己的电脑上安装了Android Studio和Eclipse，所以这里通用了同一个SDK，如下图：<br>[图片]</p>
+<p>完成了之后，接下来，我们还要在Eclipse中安装相对应的插件：<br>点击Help-&gt;Install New Software, 输入如下网址，<a href="http://plugins.genymotion.com/eclipse，然后安装即可。" target="_blank" rel="external">http://plugins.genymotion.com/eclipse，然后安装即可。</a><br>然后我们就会发现在Eclipse中多了这么一个按钮，这个就是Genymotion的Virtual Device Manager按钮<br>[图片]</p>
+<p>接下来，我们打开安装好的Genymotion的程序，点击add，添加一个设备，会弹出提示需要登录，输入文章开始的时候我们创建的账号和密码，然后在列表中选择我们要添加的设备信息，点击右下角的Add按钮即可添加一个设备。<br>需要注意的一点就是，Genymotion模拟器访问网络和原生的Android模拟器是不一样的，因为Genymotion模拟器是运行在VirtualBox虚拟机上的x86架构的Android版本（这也是它的开机速度远胜于原生模拟器的原因吧），所以如果你的应用需要联网的话，那么你需要查看一下你的VirtualBox的虚拟网卡了。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[分治算法]]></title>
+      <url>http://yoursite.com/2016/08/25/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95.html</url>
+      <content type="html"><![CDATA[<p>算法描述：<br>使用分治算法设计程序，一般按以下步骤进行：<br>（1）分解：将要求解的问题划分成若干规模较小的同类问题<br>（2）求解：当子问题划分的足够小时，用较简单的方法解决<br>（3）合并：按求解的问题要求，将子问题的解逐层合并，即可构成问题的最终解答</p>
+<p>比赛赛程安排：<br> 四名选手，三天可以比完<br>选手\时间第一天第二天第三天1234214334124321<br><a id="more"></a><br>划分两个选手 ，一天就可以比完<br>选手\时间第一天1221</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Scala简介]]></title>
       <url>http://yoursite.com/2016/08/25/Scala%E7%AE%80%E4%BB%8B.html</url>
       <content type="html"><![CDATA[<p>Scala语言，函数式编程语言。</p>
