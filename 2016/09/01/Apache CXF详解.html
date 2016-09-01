@@ -84,12 +84,22 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="付俊豪GitHub博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="关于webservice框架cxf遇到的一些问题
+代码贴上：import org.apache.cxf.jaxws.JaxWsServerFactoryBean;
+import com.java1234.service.HelloWorld;import com.java1234.service.impl.HelloWorldImpl;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于webservice框架cxf遇到的一些问题">
+<meta property="og:url" content="http://yoursite.com/2016/09/01/Apache CXF详解.html">
 <meta property="og:site_name" content="付俊豪GitHub博客">
+<meta property="og:description" content="关于webservice框架cxf遇到的一些问题
+代码贴上：import org.apache.cxf.jaxws.JaxWsServerFactoryBean;
+import com.java1234.service.HelloWorld;import com.java1234.service.impl.HelloWorldImpl;">
+<meta property="og:updated_time" content="2016-09-01T04:23:27.098Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="付俊豪GitHub博客">
+<meta name="twitter:title" content="关于webservice框架cxf遇到的一些问题">
+<meta name="twitter:description" content="关于webservice框架cxf遇到的一些问题
+代码贴上：import org.apache.cxf.jaxws.JaxWsServerFactoryBean;
+import com.java1234.service.HelloWorld;import com.java1234.service.impl.HelloWorldImpl;">
 
 
 
@@ -110,9 +120,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/01/Apache CXF详解.html"/>
 
-  <title> 付俊豪GitHub博客 </title>
+  <title> 关于webservice框架cxf遇到的一些问题 | 付俊豪GitHub博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -133,9 +143,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -235,9 +243,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -257,10 +265,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/09/01/Apache CXF详解.html" itemprop="url">
-                  关于webservice框架cxf遇到的一些问题
-                </a>
+                关于webservice框架cxf遇到的一些问题
               
             
           </h1>
@@ -272,7 +277,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-01T04:19:04Z" content="2016-09-01">
+            <time itemprop="dateCreated" datetime="2016-09-01T12:19:04+08:00" content="2016-09-01">
               2016-09-01
             </time>
           </span>
@@ -319,24 +324,43 @@
       
 
       
-        
-          <p>关于webservice框架cxf遇到的一些问题</p>
+        <p>关于webservice框架cxf遇到的一些问题</p>
 <p>代码贴上：<br>import org.apache.cxf.jaxws.JaxWsServerFactoryBean;</p>
-<p>import com.java1234.service.HelloWorld;<br>import com.java1234.service.impl.HelloWorldImpl;<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/01/Apache CXF详解.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+<p>import com.java1234.service.HelloWorld;<br>import com.java1234.service.impl.HelloWorldImpl;<br><a id="more"></a><br>public class Server {</p>
+<pre><code>public static void main(String[] args) {
+    System.out.println(&quot;webservice start!&quot;);
+    HelloWorld helloWorldImpl = new HelloWorldImpl();
+    String address = &quot;http://192.168.0.101/hello?wsdl&quot;;
+    // Endpoint.publish(address, helloWorldImpl);
+    JaxWsServerFactoryBean factoryBean = new JaxWsServerFactoryBean();
+    factoryBean.setAddress(address);
+    factoryBean.setServiceClass(HelloWorld.class);
+    factoryBean.setServiceBean(helloWorldImpl);
+    factoryBean.create();
+    System.out.println(&quot;webservice started!&quot;);
+}
+</code></pre><p>}</p>
+<p>警告: Interceptor for {<a href="http://impl.service.test.com/}TestService" target="_blank" rel="external">http://impl.service.test.com/}TestService</a> has thrown exception, unwinding now<br>org.apache.cxf.interceptor.Fault: No binding operation info while invoking unknown method with params unknown.</p>
+<p>解决方式:<br>将访问地址修改为<a href="http://localhost:8080/cxf/TestService?wsdl即可加入了?wsdl" target="_blank" rel="external">http://localhost:8080/cxf/TestService?wsdl即可加入了?wsdl</a></p>
+<p>警告: Interceptor for {<a href="http://impl.service.test.com/}TestService" target="_blank" rel="external">http://impl.service.test.com/}TestService</a> has thrown exception, unwinding now<br>org.apache.cxf.binding.soap.SoapFault: A SOAP 1.2 message is not valid when sent to a SOAP 1.1 only endpoint.</p>
+<p>原因是soap协议不匹配，要使用soap1.2协议<br>在接口或实现类上声明，注意要引入geronimo-jaxws_2.2_spec-1.0.jar包<br>@BindingType(value = “<a href="http://www.w3.org/2003/05/soap/bindings/HTTP/" target="_blank" rel="external">http://www.w3.org/2003/05/soap/bindings/HTTP/</a>“) 或<br>@BindingType(value = SOAPBinding.SOAP12HTTP_BINDING)</p>
+<p>cxf 做webservice客户端使用soap1.2协议</p>
+<jaxws:client id="cdsPatientServices" address="http://localhost:8181/cxf/v1/soap/patient" bindingid="http://www.w3.org/2003/05/soap/bindings/HTTP/" serviceclass="net.carefx.cds.v1.service.patientservices.CdsPatientServices">
+</jaxws:client>
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
@@ -344,601 +368,32 @@
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/08/25/使用Genymotion代替原生模拟器.html" rel="next" title="使用Genymotion代替原生模拟器">
+                <i class="fa fa-chevron-left"></i> 使用Genymotion代替原生模拟器
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2016/08/25/使用Genymotion代替原生模拟器.html" itemprop="url">
-                  使用Genymotion代替原生模拟器
-                </a>
-              
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-25T08:08:26Z" content="2016-08-25">
-              2016-08-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>用过Eclipse开发的Android工程师都知道原生的模拟器非常NB啊，每次出场就跟古代的大姑娘上轿一样，要先打扮好，然后迈着三寸金莲慢慢悠悠出来，实在受不了了，所以干脆找个可替代的产品吧，想起前阵子在微博上看到的Genymotion，于是今天就直接用上了，果断速度杠杠滴啊，写android的小伙伴们可以果断走起了，注意：mac下写android的小伙伴要耐心点儿，如果你升级了10.9的话，会有意想不到的兼容性问题发生，本人血的教训已经可以足够作为证明了。<br>准备工作<br>首先到Genymotion官网上注册一个账号，传送门在此，注意，该账号并非只用于下载所需程序，还会在你新建不同的Devices时要用到，所以要记牢。注册完账号之后，登录，然后就可以直接到下载页面（下载传送门在此）去下载你所需要的东西了，基本上我们需要如下的几个程序或者插件：<br>VirtualBox(win系统下Genymotion官方有Genymotion Installer With VirtualBox版本的，可直接下载，mac osx或者Linux系统需要单独安装VirtualBox)<br>Genymotion Installer<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/25/使用Genymotion代替原生模拟器.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/25/分治算法.html" itemprop="url">
-                  分治算法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-25T08:06:20Z" content="2016-08-25">
-              2016-08-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>算法描述：<br>使用分治算法设计程序，一般按以下步骤进行：<br>（1）分解：将要求解的问题划分成若干规模较小的同类问题<br>（2）求解：当子问题划分的足够小时，用较简单的方法解决<br>（3）合并：按求解的问题要求，将子问题的解逐层合并，即可构成问题的最终解答</p>
-<p>比赛赛程安排：<br> 四名选手，三天可以比完<br>选手\时间第一天第二天第三天1234214334124321<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/25/分治算法.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/25/Scala简介.html" itemprop="url">
-                  Scala简介
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-25T07:52:28Z" content="2016-08-25">
-              2016-08-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Scala语言，函数式编程语言。</p>
-<p>一、安装Scala语言<br>    前往scala官网下载对应的系统版本，我的是windows7 64位系统<br>    下载好scala-2.11.8.msi,直接点击安装。<br>    一路下去Next…<br>二、基础语法<br>    值引用透明，完美的分布式编程语言。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/25/Scala简介.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/21/基础知识 (JNI、三大商用虚拟机).html" itemprop="url">
-                  JIT编译器(虚拟机)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-21T04:32:03Z" content="2016-08-21">
-              2016-08-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>JIT编译器，英文写作Just-In-Time Compiler，中文意思是即时编译器.</p>
-</blockquote>
-<p>在Java编程语言和环境中，即时编译器(JIT compiler，just-in-time compiler)是一个把Java的字节码(包括需要被解释的指令的程序)转换成可以直接发送给处理器的指令的程序。当你写好一个Java程序后，源语言的语句将由Java编译器编译成字节码，而不是编译成与某个特定的处理器硬件平台对应的指令代码(比如，Intel的Pentium微处理器或IBM的System/390处理器)。字节码是可以发送给任何平台并且能在那个平台上运行的独立于平台的代码。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/21/基础知识 (JNI、三大商用虚拟机).html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/21/helloworld.html" itemprop="url">
-                  Java世界里的HelloWorld
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-21T03:13:11Z" content="2016-08-21">
-              2016-08-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="HelloWorld-java"><a href="#HelloWorld-java" class="headerlink" title="HelloWorld.java"></a>HelloWorld.java</h1><p>public static void main(String[] args)</p>
-<p>{<br>    System.out.println(“Hello,Java!”);</p>
-<p>}<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/21/helloworld.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -946,6 +401,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -965,8 +424,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -1043,6 +511,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -1139,6 +618,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
