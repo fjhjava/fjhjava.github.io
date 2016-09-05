@@ -23,7 +23,7 @@
 <p>(D)根据MappedStatement对象中的结果映射配置对得到的执行结果进行转换处理，并得到最终的处理结果。</p>
 <p>(E)释放连接资源。</p>
 <p>(4)返回处理结果将最终的处理结果返回。</p>
-<p>来源:<a href="http://baike.so.com/doc/5582692-5795562.html" target="_blank" rel="external">Mybatis360百科</a></p>
+<p>来源:<a href="http://baike.so.com/doc/5582692-5795562.html" target="_blank">Mybatis360百科</a></p>
 ]]></content>
     </entry>
     
