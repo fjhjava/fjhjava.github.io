@@ -84,19 +84,16 @@
 
 
 
-<meta name="description" content="Scala语言，函数式编程语言。
-一、安装Scala语言    前往scala官网下载对应的系统版本，我的是windows7 64位系统    下载好scala-2.11.8.msi,直接点击安装。    一路下去Next…二、基础语法    值引用透明，完美的分布式编程语言。">
+<meta name="description" content="准备：1、下载好源码Source code (zip)2、将源码导入Eclipse当中">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Scala简介">
-<meta property="og:url" content="http://yoursite.com/2016/08/25/Scala简介.html">
+<meta property="og:title" content="Myabtis 3.4.1源码分析之总体流程">
+<meta property="og:url" content="http://yoursite.com/2016/09/05/Mybatis源码分析之项目依赖.html">
 <meta property="og:site_name" content="付俊豪GitHub博客">
-<meta property="og:description" content="Scala语言，函数式编程语言。
-一、安装Scala语言    前往scala官网下载对应的系统版本，我的是windows7 64位系统    下载好scala-2.11.8.msi,直接点击安装。    一路下去Next…二、基础语法    值引用透明，完美的分布式编程语言。">
-<meta property="og:updated_time" content="2016-08-25T08:01:20.256Z">
+<meta property="og:description" content="准备：1、下载好源码Source code (zip)2、将源码导入Eclipse当中">
+<meta property="og:updated_time" content="2016-09-05T02:51:12.257Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Scala简介">
-<meta name="twitter:description" content="Scala语言，函数式编程语言。
-一、安装Scala语言    前往scala官网下载对应的系统版本，我的是windows7 64位系统    下载好scala-2.11.8.msi,直接点击安装。    一路下去Next…二、基础语法    值引用透明，完美的分布式编程语言。">
+<meta name="twitter:title" content="Myabtis 3.4.1源码分析之总体流程">
+<meta name="twitter:description" content="准备：1、下载好源码Source code (zip)2、将源码导入Eclipse当中">
 
 
 
@@ -117,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/08/25/Scala简介.html"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/05/Mybatis源码分析之项目依赖.html"/>
 
-  <title> Scala简介 | 付俊豪GitHub博客 </title>
+  <title> Myabtis 3.4.1源码分析之总体流程 | 付俊豪GitHub博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -262,7 +259,7 @@
             
             
               
-                Scala简介
+                Myabtis 3.4.1源码分析之总体流程
               
             
           </h1>
@@ -274,8 +271,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-25T15:52:28+08:00" content="2016-08-25">
-              2016-08-25
+            <time itemprop="dateCreated" datetime="2016-09-05T10:40:14+08:00" content="2016-09-05">
+              2016-09-05
             </time>
           </span>
 
@@ -321,9 +318,61 @@
       
 
       
-        <p>Scala语言，函数式编程语言。</p>
-<p>一、安装Scala语言<br>    前往scala官网下载对应的系统版本，我的是windows7 64位系统<br>    下载好scala-2.11.8.msi,直接点击安装。<br>    一路下去Next…<br>二、基础语法<br>    值引用透明，完美的分布式编程语言。</p>
-<a id="more"></a>
+        <p>准备：<br>1、下载好源码<a href="https://github.com/mybatis/mybatis-3/archive/mybatis-3.4.1.tar.gz" target="_blank" rel="external">Source code (zip)</a><br>2、将源码导入Eclipse当中<br><a id="more"></a><br>开始：<br>先来看下项目的目录结构<br>ibatis<br>             ├─annotations<br>             ├─binding<br>             ├─builder<br>             │  ├─annotation<br>             │  └─xml<br>             ├─cache<br>             │  ├─decorators<br>             │  └─impl<br>             ├─cursor<br>             │  └─defaults<br>             ├─datasource<br>             │  ├─jndi<br>             │  ├─pooled<br>             │  └─unpooled<br>             ├─exceptions<br>             ├─executor<br>             │  ├─keygen<br>             │  ├─loader<br>             │  │  ├─cglib<br>             │  │  └─javassis<br>             │  ├─parameter<br>             │  ├─result<br>             │  ├─resultset<br>             │  └─statement<br>             ├─io<br>             ├─jdbc<br>             ├─logging<br>             │  ├─commons<br>             │  ├─jdbc<br>             │  ├─jdk14<br>             │  ├─log4j<br>             │  ├─log4j2<br>             │  ├─nologging<br>             │  ├─slf4j<br>             │  └─stdout<br>             ├─mapping<br>             ├─parsing<br>             ├─plugin<br>             ├─reflection<br>             │  ├─factory<br>             │  ├─invoker<br>             │  ├─property<br>             │  └─wrapper<br>             ├─scripting<br>             │  ├─defaults<br>             │  └─xmltags<br>             ├─session<br>             │  └─defaults<br>             ├─transaction<br>             │  ├─jdbc<br>             │  └─managed<br>             └─type</p>
+<p>pom.xml当中的依赖：<br> <dependencies><br>    <dependency><br>      <groupid>ognl</groupid><br>      <artifactid>ognl</artifactid><br>      <version>3.1.8</version><br>      <scope>compile</scope><br>      <optional>true</optional><br>    </dependency><br>    <dependency><br>      <groupid>org.javassist</groupid><br>      <artifactid>javassist</artifactid><br>      <version>3.20.0-GA</version><br>      <scope>compile</scope><br>      <optional>true</optional><br>    </dependency><br>    <dependency><br>      <groupid>org.slf4j</groupid><br>      <artifactid>slf4j-api</artifactid><br>      <version>1.7.21</version><br>      <optional>true</optional><br>    </dependency><br>    <dependency><br>      <groupid>org.slf4j</groupid><br>      <artifactid>slf4j-log4j12</artifactid><br>      <version>1.7.21</version><br>      <optional>true</optional><br>    </dependency><br>    <dependency><br>      <groupid>log4j</groupid><br>      <artifactid>log4j</artifactid><br>      <version>1.2.17</version><br>      <optional>true</optional><br>    </dependency><br>    <!-- Don't upgrade to 2.4+ until mybatis switches to java 7 --><br>    <dependency><br>      <groupid>org.apache.logging.log4j</groupid><br>      <artifactid>log4j-core</artifactid><br>      <version>2.3</version><br>      <optional>true</optional><br>    </dependency><br>    <dependency><br>      <groupid>commons-logging</groupid><br>      <artifactid>commons-logging</artifactid><br>      <version>1.2</version><br>      <optional>true</optional><br>    </dependency><br>    <dependency><br>      <groupid>cglib</groupid><br>      <artifactid>cglib</artifactid><br>      <version>3.2.2</version><br>      <optional>true</optional><br>    </dependency></dependencies></p>
+<pre><code>&lt;!-- Test dependencies --&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;junit&lt;/groupId&gt;
+  &lt;artifactId&gt;junit&lt;/artifactId&gt;
+  &lt;version&gt;4.12&lt;/version&gt;
+  &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.hsqldb&lt;/groupId&gt;
+  &lt;artifactId&gt;hsqldb&lt;/artifactId&gt;
+  &lt;version&gt;2.3.4&lt;/version&gt;
+  &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.apache.derby&lt;/groupId&gt;
+  &lt;artifactId&gt;derby&lt;/artifactId&gt;
+  &lt;version&gt;10.12.1.1&lt;/version&gt;
+  &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.mockito&lt;/groupId&gt;
+  &lt;artifactId&gt;mockito-core&lt;/artifactId&gt;
+  &lt;version&gt;1.10.19&lt;/version&gt;
+  &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;!-- Do not go to 2.x until we are on jdk7 --&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;commons-dbcp&lt;/groupId&gt;
+  &lt;artifactId&gt;commons-dbcp&lt;/artifactId&gt;
+  &lt;version&gt;1.4&lt;/version&gt;
+  &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.jboss.spec.javax.transaction&lt;/groupId&gt;
+  &lt;artifactId&gt;jboss-transaction-api_1.2_spec&lt;/artifactId&gt;
+  &lt;version&gt;1.0.1.Final&lt;/version&gt;
+  &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.apache.velocity&lt;/groupId&gt;
+  &lt;artifactId&gt;velocity&lt;/artifactId&gt;
+  &lt;version&gt;1.7&lt;/version&gt;
+  &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;!-- postgresql driver is required to run the refcursor tests --&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;postgresql&lt;/groupId&gt;
+  &lt;artifactId&gt;postgresql&lt;/artifactId&gt;
+  &lt;version&gt;9.1-901-1.jdbc4&lt;/version&gt;
+  &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre><p>  </p>
+
       
     </div>
 
@@ -348,17 +397,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/21/基础知识 (JNI、三大商用虚拟机).html" rel="next" title="JIT编译器(虚拟机)">
-                <i class="fa fa-chevron-left"></i> JIT编译器(虚拟机)
+              <a href="/2016/09/05/Mybatis源码分析之总体架构.html" rel="next" title="Myabtis 3.4.1源码分析之总体流程">
+                <i class="fa fa-chevron-left"></i> Myabtis 3.4.1源码分析之总体流程
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/08/25/分治算法.html" rel="prev" title="分治算法">
-                分治算法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
