@@ -84,22 +84,19 @@
 
 
 
-<meta name="description" content="关于webservice框架cxf遇到的一些问题
-代码贴上：import org.apache.cxf.jaxws.JaxWsServerFactoryBean;
-import com.java1234.service.HelloWorld;import com.java1234.service.impl.HelloWorldImpl;">
+<meta name="description" content="Scala语言，函数式编程语言。
+一、安装Scala语言    前往scala官网下载对应的系统版本，我的是windows7 64位系统    下载好scala-2.11.8.msi,直接点击安装。    一路下去Next…二、基础语法    值引用透明，完美的分布式编程语言。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于webservice框架cxf遇到的一些问题">
-<meta property="og:url" content="http://yoursite.com/2016/09/01/Apache CXF详解.html">
+<meta property="og:title" content="Scala简介">
+<meta property="og:url" content="http://yoursite.com/2016/08/25/1.html">
 <meta property="og:site_name" content="付俊豪GitHub博客">
-<meta property="og:description" content="关于webservice框架cxf遇到的一些问题
-代码贴上：import org.apache.cxf.jaxws.JaxWsServerFactoryBean;
-import com.java1234.service.HelloWorld;import com.java1234.service.impl.HelloWorldImpl;">
-<meta property="og:updated_time" content="2016-09-01T04:23:27.098Z">
+<meta property="og:description" content="Scala语言，函数式编程语言。
+一、安装Scala语言    前往scala官网下载对应的系统版本，我的是windows7 64位系统    下载好scala-2.11.8.msi,直接点击安装。    一路下去Next…二、基础语法    值引用透明，完美的分布式编程语言。">
+<meta property="og:updated_time" content="2016-08-25T08:01:20.256Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于webservice框架cxf遇到的一些问题">
-<meta name="twitter:description" content="关于webservice框架cxf遇到的一些问题
-代码贴上：import org.apache.cxf.jaxws.JaxWsServerFactoryBean;
-import com.java1234.service.HelloWorld;import com.java1234.service.impl.HelloWorldImpl;">
+<meta name="twitter:title" content="Scala简介">
+<meta name="twitter:description" content="Scala语言，函数式编程语言。
+一、安装Scala语言    前往scala官网下载对应的系统版本，我的是windows7 64位系统    下载好scala-2.11.8.msi,直接点击安装。    一路下去Next…二、基础语法    值引用透明，完美的分布式编程语言。">
 
 
 
@@ -120,9 +117,9 @@ import com.java1234.service.HelloWorld;import com.java1234.service.impl.HelloWor
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/01/Apache CXF详解.html"/>
+  <link rel="canonical" href="http://yoursite.com/2016/08/25/1.html"/>
 
-  <title> 关于webservice框架cxf遇到的一些问题 | 付俊豪GitHub博客 </title>
+  <title> Scala简介 | 付俊豪GitHub博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -265,7 +262,7 @@ import com.java1234.service.HelloWorld;import com.java1234.service.impl.HelloWor
             
             
               
-                关于webservice框架cxf遇到的一些问题
+                Scala简介
               
             
           </h1>
@@ -277,8 +274,8 @@ import com.java1234.service.HelloWorld;import com.java1234.service.impl.HelloWor
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-01T12:19:04+08:00" content="2016-09-01">
-              2016-09-01
+            <time itemprop="dateCreated" datetime="2016-08-25T15:52:28+08:00" content="2016-08-25">
+              2016-08-25
             </time>
           </span>
 
@@ -324,29 +321,9 @@ import com.java1234.service.HelloWorld;import com.java1234.service.impl.HelloWor
       
 
       
-        <p>关于webservice框架cxf遇到的一些问题</p>
-<p>代码贴上：<br>import org.apache.cxf.jaxws.JaxWsServerFactoryBean;</p>
-<p>import com.java1234.service.HelloWorld;<br>import com.java1234.service.impl.HelloWorldImpl;<br><a id="more"></a><br>public class Server {</p>
-<pre><code>public static void main(String[] args) {
-    System.out.println(&quot;webservice start!&quot;);
-    HelloWorld helloWorldImpl = new HelloWorldImpl();
-    String address = &quot;http://192.168.0.101/hello?wsdl&quot;;
-    // Endpoint.publish(address, helloWorldImpl);
-    JaxWsServerFactoryBean factoryBean = new JaxWsServerFactoryBean();
-    factoryBean.setAddress(address);
-    factoryBean.setServiceClass(HelloWorld.class);
-    factoryBean.setServiceBean(helloWorldImpl);
-    factoryBean.create();
-    System.out.println(&quot;webservice started!&quot;);
-}
-</code></pre><p>}</p>
-<p>警告: Interceptor for {<a href="http://impl.service.test.com/}TestService" target="_blank" rel="external">http://impl.service.test.com/}TestService</a> has thrown exception, unwinding now<br>org.apache.cxf.interceptor.Fault: No binding operation info while invoking unknown method with params unknown.</p>
-<p>解决方式:<br>将访问地址修改为<a href="http://localhost:8080/cxf/TestService?wsdl即可加入了?wsdl" target="_blank" rel="external">http://localhost:8080/cxf/TestService?wsdl即可加入了?wsdl</a></p>
-<p>警告: Interceptor for {<a href="http://impl.service.test.com/}TestService" target="_blank" rel="external">http://impl.service.test.com/}TestService</a> has thrown exception, unwinding now<br>org.apache.cxf.binding.soap.SoapFault: A SOAP 1.2 message is not valid when sent to a SOAP 1.1 only endpoint.</p>
-<p>原因是soap协议不匹配，要使用soap1.2协议<br>在接口或实现类上声明，注意要引入geronimo-jaxws_2.2_spec-1.0.jar包<br>@BindingType(value = “<a href="http://www.w3.org/2003/05/soap/bindings/HTTP/" target="_blank" rel="external">http://www.w3.org/2003/05/soap/bindings/HTTP/</a>“) 或<br>@BindingType(value = SOAPBinding.SOAP12HTTP_BINDING)</p>
-<p>cxf 做webservice客户端使用soap1.2协议</p>
-<jaxws:client id="cdsPatientServices" address="http://localhost:8181/cxf/v1/soap/patient" bindingid="http://www.w3.org/2003/05/soap/bindings/HTTP/" serviceclass="net.carefx.cds.v1.service.patientservices.CdsPatientServices">
-</jaxws:client>
+        <p>Scala语言，函数式编程语言。</p>
+<p>一、安装Scala语言<br>    前往scala官网下载对应的系统版本，我的是windows7 64位系统<br>    下载好scala-2.11.8.msi,直接点击安装。<br>    一路下去Next…<br>二、基础语法<br>    值引用透明，完美的分布式编程语言。</p>
+<a id="more"></a>
       
     </div>
 
@@ -371,16 +348,16 @@ import com.java1234.service.HelloWorld;import com.java1234.service.impl.HelloWor
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/25/使用Genymotion代替原生模拟器.html" rel="next" title="使用Genymotion代替原生模拟器">
-                <i class="fa fa-chevron-left"></i> 使用Genymotion代替原生模拟器
+              <a href="/2016/08/21/3.html" rel="next" title="JIT编译器(虚拟机)">
+                <i class="fa fa-chevron-left"></i> JIT编译器(虚拟机)
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/09/05/Mybatis源码分析之总体架构.html" rel="prev" title="Myabtis 3.4.1源码分析之总体流程">
-                Myabtis 3.4.1源码分析之总体流程 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/08/25/4.html" rel="prev" title="分治算法">
+                分治算法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -449,7 +426,7 @@ import com.java1234.service.HelloWorld;import com.java1234.service.impl.HelloWor
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

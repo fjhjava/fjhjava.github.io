@@ -84,19 +84,28 @@
 
 
 
-<meta name="description" content="算法描述：使用分治算法设计程序，一般按以下步骤进行：（1）分解：将要求解的问题划分成若干规模较小的同类问题（2）求解：当子问题划分的足够小时，用较简单的方法解决（3）合并：按求解的问题要求，将子问题的解逐层合并，即可构成问题的最终解答
-比赛赛程安排： 四名选手，三天可以比完选手\时间第一天第二天第三天1234214334124321">
+<meta name="description" content="前言：MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。
+总体流程
+(1)加载配置并初始化
+触发条件:加载配置文件
+将SQL的配置信息加载成为一个个MappedStatement对象(包括了传入参数映射配置、执行的SQ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="分治算法">
-<meta property="og:url" content="http://yoursite.com/2016/08/25/分治算法.html">
+<meta property="og:title" content="Myabtis 3.4.1源码分析之总体流程">
+<meta property="og:url" content="http://yoursite.com/2016/09/05/6.html">
 <meta property="og:site_name" content="付俊豪GitHub博客">
-<meta property="og:description" content="算法描述：使用分治算法设计程序，一般按以下步骤进行：（1）分解：将要求解的问题划分成若干规模较小的同类问题（2）求解：当子问题划分的足够小时，用较简单的方法解决（3）合并：按求解的问题要求，将子问题的解逐层合并，即可构成问题的最终解答
-比赛赛程安排： 四名选手，三天可以比完选手\时间第一天第二天第三天1234214334124321">
-<meta property="og:updated_time" content="2016-08-25T08:07:22.395Z">
+<meta property="og:description" content="前言：MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。
+总体流程
+(1)加载配置并初始化
+触发条件:加载配置文件
+将SQL的配置信息加载成为一个个MappedStatement对象(包括了传入参数映射配置、执行的SQ">
+<meta property="og:updated_time" content="2016-09-05T02:39:30.690Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分治算法">
-<meta name="twitter:description" content="算法描述：使用分治算法设计程序，一般按以下步骤进行：（1）分解：将要求解的问题划分成若干规模较小的同类问题（2）求解：当子问题划分的足够小时，用较简单的方法解决（3）合并：按求解的问题要求，将子问题的解逐层合并，即可构成问题的最终解答
-比赛赛程安排： 四名选手，三天可以比完选手\时间第一天第二天第三天1234214334124321">
+<meta name="twitter:title" content="Myabtis 3.4.1源码分析之总体流程">
+<meta name="twitter:description" content="前言：MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。
+总体流程
+(1)加载配置并初始化
+触发条件:加载配置文件
+将SQL的配置信息加载成为一个个MappedStatement对象(包括了传入参数映射配置、执行的SQ">
 
 
 
@@ -117,9 +126,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/08/25/分治算法.html"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/05/6.html"/>
 
-  <title> 分治算法 | 付俊豪GitHub博客 </title>
+  <title> Myabtis 3.4.1源码分析之总体流程 | 付俊豪GitHub博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -262,7 +271,7 @@
             
             
               
-                分治算法
+                Myabtis 3.4.1源码分析之总体流程
               
             
           </h1>
@@ -274,8 +283,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-25T16:06:20+08:00" content="2016-08-25">
-              2016-08-25
+            <time itemprop="dateCreated" datetime="2016-09-05T10:29:20+08:00" content="2016-09-05">
+              2016-09-05
             </time>
           </span>
 
@@ -321,8 +330,24 @@
       
 
       
-        <p>算法描述：<br>使用分治算法设计程序，一般按以下步骤进行：<br>（1）分解：将要求解的问题划分成若干规模较小的同类问题<br>（2）求解：当子问题划分的足够小时，用较简单的方法解决<br>（3）合并：按求解的问题要求，将子问题的解逐层合并，即可构成问题的最终解答</p>
-<p>比赛赛程安排：<br> 四名选手，三天可以比完<br>选手\时间第一天第二天第三天1234214334124321<br><a id="more"></a><br>划分两个选手 ，一天就可以比完<br>选手\时间第一天1221</p>
+        <p>前言：MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。</p>
+<p>总体流程</p>
+<p>(1)加载配置并初始化</p>
+<p>触发条件:加载配置文件</p>
+<p>将SQL的配置信息加载成为一个个MappedStatement对象(包括了传入参数映射配置、执行的SQL语句、结果映射配置)，存储在内存中。<br><a id="more"></a><br>(2)接收调用请求</p>
+<p>触发条件:调用Mybatis提供的API</p>
+<p>传入参数:为SQL的ID和传入参数对象</p>
+<p>处理过程:将请求传递给下层的请求处理层进行处理。</p>
+<p>(3)处理操作请求 触发条件:API接口层传递请求过来</p>
+<p>传入参数:为SQL的ID和传入参数对象</p>
+<p>处理过程:</p>
+<p>(A)根据SQL的ID查找对应的MappedStatement对象。</p>
+<p>(B)根据传入参数对象解析MappedStatement对象，得到最终要执行的SQL和执行传入参数。</p>
+<p>(C)获取数据库连接，根据得到的最终SQL语句和执行传入参数到数据库执行，并得到执行结果。</p>
+<p>(D)根据MappedStatement对象中的结果映射配置对得到的执行结果进行转换处理，并得到最终的处理结果。</p>
+<p>(E)释放连接资源。</p>
+<p>(4)返回处理结果将最终的处理结果返回。</p>
+<p>来源:<a href="http://baike.so.com/doc/5582692-5795562.html" target="_blank">Mybatis360百科</a></p>
 
       
     </div>
@@ -348,16 +373,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/25/Scala简介.html" rel="next" title="Scala简介">
-                <i class="fa fa-chevron-left"></i> Scala简介
+              <a href="/2016/09/01/2.html" rel="next" title="关于webservice框架cxf遇到的一些问题">
+                <i class="fa fa-chevron-left"></i> 关于webservice框架cxf遇到的一些问题
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/08/25/使用Genymotion代替原生模拟器.html" rel="prev" title="使用Genymotion代替原生模拟器">
-                使用Genymotion代替原生模拟器 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/09/05/7.html" rel="prev" title="Myabtis 3.4.1源码分析之代码结构">
+                Myabtis 3.4.1源码分析之代码结构 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -426,7 +451,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

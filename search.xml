@@ -4,8 +4,8 @@
   
     
     <entry>
-      <title><![CDATA[Myabtis 3.4.1源码分析之总体流程]]></title>
-      <url>http://yoursite.com/2016/09/05/Mybatis%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8B%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96.html</url>
+      <title><![CDATA[Myabtis 3.4.1源码分析之代码结构]]></title>
+      <url>http://yoursite.com/2016/09/05/7.html</url>
       <content type="html"><![CDATA[<p>准备：<br>1、下载好源码<a href="https://github.com/mybatis/mybatis-3/archive/mybatis-3.4.1.tar.gz" target="_blank" rel="external">Source code (zip)</a><br>2、将源码导入Eclipse当中<br><a id="more"></a><br>开始：<br>先来看下项目的目录结构<br>ibatis<br>             ├─annotations<br>             ├─binding<br>             ├─builder<br>             │  ├─annotation<br>             │  └─xml<br>             ├─cache<br>             │  ├─decorators<br>             │  └─impl<br>             ├─cursor<br>             │  └─defaults<br>             ├─datasource<br>             │  ├─jndi<br>             │  ├─pooled<br>             │  └─unpooled<br>             ├─exceptions<br>             ├─executor<br>             │  ├─keygen<br>             │  ├─loader<br>             │  │  ├─cglib<br>             │  │  └─javassis<br>             │  ├─parameter<br>             │  ├─result<br>             │  ├─resultset<br>             │  └─statement<br>             ├─io<br>             ├─jdbc<br>             ├─logging<br>             │  ├─commons<br>             │  ├─jdbc<br>             │  ├─jdk14<br>             │  ├─log4j<br>             │  ├─log4j2<br>             │  ├─nologging<br>             │  ├─slf4j<br>             │  └─stdout<br>             ├─mapping<br>             ├─parsing<br>             ├─plugin<br>             ├─reflection<br>             │  ├─factory<br>             │  ├─invoker<br>             │  ├─property<br>             │  └─wrapper<br>             ├─scripting<br>             │  ├─defaults<br>             │  └─xmltags<br>             ├─session<br>             │  └─defaults<br>             ├─transaction<br>             │  ├─jdbc<br>             │  └─managed<br>             └─type</p>
 <p>pom.xml当中的依赖：<br> <dependencies><br>    <dependency><br>      <groupid>ognl</groupid><br>      <artifactid>ognl</artifactid><br>      <version>3.1.8</version><br>      <scope>compile</scope><br>      <optional>true</optional><br>    </dependency><br>    <dependency><br>      <groupid>org.javassist</groupid><br>      <artifactid>javassist</artifactid><br>      <version>3.20.0-GA</version><br>      <scope>compile</scope><br>      <optional>true</optional><br>    </dependency><br>    <dependency><br>      <groupid>org.slf4j</groupid><br>      <artifactid>slf4j-api</artifactid><br>      <version>1.7.21</version><br>      <optional>true</optional><br>    </dependency><br>    <dependency><br>      <groupid>org.slf4j</groupid><br>      <artifactid>slf4j-log4j12</artifactid><br>      <version>1.7.21</version><br>      <optional>true</optional><br>    </dependency><br>    <dependency><br>      <groupid>log4j</groupid><br>      <artifactid>log4j</artifactid><br>      <version>1.2.17</version><br>      <optional>true</optional><br>    </dependency><br>    <!-- Don't upgrade to 2.4+ until mybatis switches to java 7 --><br>    <dependency><br>      <groupid>org.apache.logging.log4j</groupid><br>      <artifactid>log4j-core</artifactid><br>      <version>2.3</version><br>      <optional>true</optional><br>    </dependency><br>    <dependency><br>      <groupid>commons-logging</groupid><br>      <artifactid>commons-logging</artifactid><br>      <version>1.2</version><br>      <optional>true</optional><br>    </dependency><br>    <dependency><br>      <groupid>cglib</groupid><br>      <artifactid>cglib</artifactid><br>      <version>3.2.2</version><br>      <optional>true</optional><br>    </dependency></dependencies></p>
 <pre><code>&lt;!-- Test dependencies --&gt;
@@ -65,7 +65,7 @@
     
     <entry>
       <title><![CDATA[Myabtis 3.4.1源码分析之总体流程]]></title>
-      <url>http://yoursite.com/2016/09/05/Mybatis%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8B%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84.html</url>
+      <url>http://yoursite.com/2016/09/05/6.html</url>
       <content type="html"><![CDATA[<p>前言：MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。</p>
 <p>总体流程</p>
 <p>(1)加载配置并初始化</p>
@@ -89,7 +89,7 @@
     
     <entry>
       <title><![CDATA[关于webservice框架cxf遇到的一些问题]]></title>
-      <url>http://yoursite.com/2016/09/01/Apache%20CXF%E8%AF%A6%E8%A7%A3.html</url>
+      <url>http://yoursite.com/2016/09/01/2.html</url>
       <content type="html"><![CDATA[<p>关于webservice框架cxf遇到的一些问题</p>
 <p>代码贴上：<br>import org.apache.cxf.jaxws.JaxWsServerFactoryBean;</p>
 <p>import com.java1234.service.HelloWorld;<br>import com.java1234.service.impl.HelloWorldImpl;<br><a id="more"></a><br>public class Server {</p>
@@ -117,7 +117,7 @@
     
     <entry>
       <title><![CDATA[使用Genymotion代替原生模拟器]]></title>
-      <url>http://yoursite.com/2016/08/25/%E4%BD%BF%E7%94%A8Genymotion%E4%BB%A3%E6%9B%BF%E5%8E%9F%E7%94%9F%E6%A8%A1%E6%8B%9F%E5%99%A8.html</url>
+      <url>http://yoursite.com/2016/08/25/5.html</url>
       <content type="html"><![CDATA[<p>用过Eclipse开发的Android工程师都知道原生的模拟器非常NB啊，每次出场就跟古代的大姑娘上轿一样，要先打扮好，然后迈着三寸金莲慢慢悠悠出来，实在受不了了，所以干脆找个可替代的产品吧，想起前阵子在微博上看到的Genymotion，于是今天就直接用上了，果断速度杠杠滴啊，写android的小伙伴们可以果断走起了，注意：mac下写android的小伙伴要耐心点儿，如果你升级了10.9的话，会有意想不到的兼容性问题发生，本人血的教训已经可以足够作为证明了。<br>准备工作<br>首先到Genymotion官网上注册一个账号，传送门在此，注意，该账号并非只用于下载所需程序，还会在你新建不同的Devices时要用到，所以要记牢。注册完账号之后，登录，然后就可以直接到下载页面（下载传送门在此）去下载你所需要的东西了，基本上我们需要如下的几个程序或者插件：<br>VirtualBox(win系统下Genymotion官方有Genymotion Installer With VirtualBox版本的，可直接下载，mac osx或者Linux系统需要单独安装VirtualBox)<br>Genymotion Installer<br><a id="more"></a><br>当然，还需要额外的Eclipse或者IntelliJ IDEA的插件，这个可以下载完再安装，也可以直接在线安装。<br>准备就绪之后就开始一路next安装完Genymotion Installer，然后打开Genymotion程序，如下图：<br>[图片]</p>
 <p>点击Settings，指定下你的android的SDK位置，我自己的电脑上安装了Android Studio和Eclipse，所以这里通用了同一个SDK，如下图：<br>[图片]</p>
 <p>完成了之后，接下来，我们还要在Eclipse中安装相对应的插件：<br>点击Help-&gt;Install New Software, 输入如下网址，<a href="http://plugins.genymotion.com/eclipse，然后安装即可。" target="_blank" rel="external">http://plugins.genymotion.com/eclipse，然后安装即可。</a><br>然后我们就会发现在Eclipse中多了这么一个按钮，这个就是Genymotion的Virtual Device Manager按钮<br>[图片]</p>
@@ -127,7 +127,7 @@
     
     <entry>
       <title><![CDATA[分治算法]]></title>
-      <url>http://yoursite.com/2016/08/25/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95.html</url>
+      <url>http://yoursite.com/2016/08/25/4.html</url>
       <content type="html"><![CDATA[<p>算法描述：<br>使用分治算法设计程序，一般按以下步骤进行：<br>（1）分解：将要求解的问题划分成若干规模较小的同类问题<br>（2）求解：当子问题划分的足够小时，用较简单的方法解决<br>（3）合并：按求解的问题要求，将子问题的解逐层合并，即可构成问题的最终解答</p>
 <p>比赛赛程安排：<br> 四名选手，三天可以比完<br>选手\时间第一天第二天第三天1234214334124321<br><a id="more"></a><br>划分两个选手 ，一天就可以比完<br>选手\时间第一天1221</p>
 ]]></content>
@@ -135,7 +135,7 @@
     
     <entry>
       <title><![CDATA[Scala简介]]></title>
-      <url>http://yoursite.com/2016/08/25/Scala%E7%AE%80%E4%BB%8B.html</url>
+      <url>http://yoursite.com/2016/08/25/1.html</url>
       <content type="html"><![CDATA[<p>Scala语言，函数式编程语言。</p>
 <p>一、安装Scala语言<br>    前往scala官网下载对应的系统版本，我的是windows7 64位系统<br>    下载好scala-2.11.8.msi,直接点击安装。<br>    一路下去Next…<br>二、基础语法<br>    值引用透明，完美的分布式编程语言。</p>
 <a id="more"></a>]]></content>
@@ -143,7 +143,7 @@
     
     <entry>
       <title><![CDATA[JIT编译器(虚拟机)]]></title>
-      <url>http://yoursite.com/2016/08/21/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%20(JNI%E3%80%81%E4%B8%89%E5%A4%A7%E5%95%86%E7%94%A8%E8%99%9A%E6%8B%9F%E6%9C%BA).html</url>
+      <url>http://yoursite.com/2016/08/21/3.html</url>
       <content type="html"><![CDATA[<blockquote>
 <p>JIT编译器，英文写作Just-In-Time Compiler，中文意思是即时编译器.</p>
 </blockquote>
@@ -161,15 +161,6 @@
 <p>JIT 页面渲染引擎</p>
 </blockquote>
 <p>JIT 页面渲染是 COMSHARP CMS 为了实现网站内容即时更新而开发的页面生成技术，JIT页面渲染引擎直接从数据库获取网站最新内容，瞬间生成页面输出给访问者，并通过 URL 转写技术实现纯静态地址。JIT 页面渲染技术是针对传统 CMS 生成静态 HTML 文件而言。传统 CMS 由于使用脚本代码模板技术，页面生成前，需要将数据库中的页面内容用外部模板进行解析与渲染，导致严重的性能问题，为了解决这个问题，传统 CMS 一般采用生成 HTML 静态文件技术，即，在内容创作完成后，对全站的内容执行一个静态 HTML 文件生成过程，最终，全站内容以静态 HTML 文件的形式存在。 静态 HTML 文件技术最显著的优势是性能出众，然而这种技术最严重的问题在于，用户对站点任何修改与更新，必须首先经过一次全站 HTML 文件重新生成过程，然后才能被访问者看到。根据不同 CMS 产品的性能和站点规模，这个 HTML 生成过程可能长到十几分钟到几十分钟或更长。也有个别 CMS 产品使用触发式页面渲染模式，即内容更新后，并不立即生成 HTML 文件，而是在用户第一次访问该页面时，触发生成该页面的 HTML 文件，这种技术的问题在于，用户第一次访问被更新页面的时候，可能经历非常漫长的等待，因为站点内各个页面之间并非孤立的，他们可能相互引用，虽然访问的只是一个页面，为了对引用页面同步更新，需要重新生成 HTML 文件的页面可能有多个。 JIT 页面渲染如何工作? 下图，是 COMSHARP CMS JIT 渲染引擎与传统 CMS 生成 HTML 静态页面模式对比。可以看出，JIT 渲染引擎直接将网站最新内容从数据库渲染给访问用户，而传统 CMS 的站点内容在到达访问用户之前，首先要经历一个 HTML 的转换过程。COMSHARP CMS JIT 页面渲染如何实现毫秒级的渲染速度? COMSHARP CMS 在页面渲染的时候，JIT 引擎可以在数十毫秒的时间内容完整整个页面的生成，这样就保证用户访问的时候，不会因 JIT 渲染造成延迟。事实上，COMSHARP CMS 网站访问速度只取决于服务器带宽，页面生成过程带来的延迟可以忽略不计。 我们有两项技术保证这样的性能: 编译级主题模板 COMSHARP CMS 的编译级主题模板直接内嵌在系统的 DLL 中，主题模板的套用是在运行时(Run Time)完成，这和传统 CMS 的调用脚本代码模板解释运行是截然不同。</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Java世界里的HelloWorld]]></title>
-      <url>http://yoursite.com/2016/08/21/helloworld.html</url>
-      <content type="html"><![CDATA[<h1 id="HelloWorld-java"><a href="#HelloWorld-java" class="headerlink" title="HelloWorld.java"></a>HelloWorld.java</h1><p>public static void main(String[] args)</p>
-<p>{<br>    System.out.println(“Hello,Java!”);</p>
-<p>}<br><a id="more"></a></p>
 ]]></content>
     </entry>
     

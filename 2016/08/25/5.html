@@ -84,28 +84,16 @@
 
 
 
-<meta name="description" content="前言：MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。
-总体流程
-(1)加载配置并初始化
-触发条件:加载配置文件
-将SQL的配置信息加载成为一个个MappedStatement对象(包括了传入参数映射配置、执行的SQ">
+<meta name="description" content="用过Eclipse开发的Android工程师都知道原生的模拟器非常NB啊，每次出场就跟古代的大姑娘上轿一样，要先打扮好，然后迈着三寸金莲慢慢悠悠出来，实在受不了了，所以干脆找个可替代的产品吧，想起前阵子在微博上看到的Genymotion，于是今天就直接用上了，果断速度杠杠滴啊，写android的小伙伴们可以果断走起了，注意：mac下写android的小伙伴要耐心点儿，如果你升级了10.9的话，会有">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Myabtis 3.4.1源码分析之总体流程">
-<meta property="og:url" content="http://yoursite.com/2016/09/05/Mybatis源码分析之总体架构.html">
+<meta property="og:title" content="使用Genymotion代替原生模拟器">
+<meta property="og:url" content="http://yoursite.com/2016/08/25/5.html">
 <meta property="og:site_name" content="付俊豪GitHub博客">
-<meta property="og:description" content="前言：MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。
-总体流程
-(1)加载配置并初始化
-触发条件:加载配置文件
-将SQL的配置信息加载成为一个个MappedStatement对象(包括了传入参数映射配置、执行的SQ">
-<meta property="og:updated_time" content="2016-09-05T02:39:30.690Z">
+<meta property="og:description" content="用过Eclipse开发的Android工程师都知道原生的模拟器非常NB啊，每次出场就跟古代的大姑娘上轿一样，要先打扮好，然后迈着三寸金莲慢慢悠悠出来，实在受不了了，所以干脆找个可替代的产品吧，想起前阵子在微博上看到的Genymotion，于是今天就直接用上了，果断速度杠杠滴啊，写android的小伙伴们可以果断走起了，注意：mac下写android的小伙伴要耐心点儿，如果你升级了10.9的话，会有">
+<meta property="og:updated_time" content="2016-08-25T08:09:02.392Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Myabtis 3.4.1源码分析之总体流程">
-<meta name="twitter:description" content="前言：MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。
-总体流程
-(1)加载配置并初始化
-触发条件:加载配置文件
-将SQL的配置信息加载成为一个个MappedStatement对象(包括了传入参数映射配置、执行的SQ">
+<meta name="twitter:title" content="使用Genymotion代替原生模拟器">
+<meta name="twitter:description" content="用过Eclipse开发的Android工程师都知道原生的模拟器非常NB啊，每次出场就跟古代的大姑娘上轿一样，要先打扮好，然后迈着三寸金莲慢慢悠悠出来，实在受不了了，所以干脆找个可替代的产品吧，想起前阵子在微博上看到的Genymotion，于是今天就直接用上了，果断速度杠杠滴啊，写android的小伙伴们可以果断走起了，注意：mac下写android的小伙伴要耐心点儿，如果你升级了10.9的话，会有">
 
 
 
@@ -126,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/05/Mybatis源码分析之总体架构.html"/>
+  <link rel="canonical" href="http://yoursite.com/2016/08/25/5.html"/>
 
-  <title> Myabtis 3.4.1源码分析之总体流程 | 付俊豪GitHub博客 </title>
+  <title> 使用Genymotion代替原生模拟器 | 付俊豪GitHub博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -271,7 +259,7 @@
             
             
               
-                Myabtis 3.4.1源码分析之总体流程
+                使用Genymotion代替原生模拟器
               
             
           </h1>
@@ -283,8 +271,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-05T10:29:20+08:00" content="2016-09-05">
-              2016-09-05
+            <time itemprop="dateCreated" datetime="2016-08-25T16:08:26+08:00" content="2016-08-25">
+              2016-08-25
             </time>
           </span>
 
@@ -330,24 +318,10 @@
       
 
       
-        <p>前言：MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。</p>
-<p>总体流程</p>
-<p>(1)加载配置并初始化</p>
-<p>触发条件:加载配置文件</p>
-<p>将SQL的配置信息加载成为一个个MappedStatement对象(包括了传入参数映射配置、执行的SQL语句、结果映射配置)，存储在内存中。<br><a id="more"></a><br>(2)接收调用请求</p>
-<p>触发条件:调用Mybatis提供的API</p>
-<p>传入参数:为SQL的ID和传入参数对象</p>
-<p>处理过程:将请求传递给下层的请求处理层进行处理。</p>
-<p>(3)处理操作请求 触发条件:API接口层传递请求过来</p>
-<p>传入参数:为SQL的ID和传入参数对象</p>
-<p>处理过程:</p>
-<p>(A)根据SQL的ID查找对应的MappedStatement对象。</p>
-<p>(B)根据传入参数对象解析MappedStatement对象，得到最终要执行的SQL和执行传入参数。</p>
-<p>(C)获取数据库连接，根据得到的最终SQL语句和执行传入参数到数据库执行，并得到执行结果。</p>
-<p>(D)根据MappedStatement对象中的结果映射配置对得到的执行结果进行转换处理，并得到最终的处理结果。</p>
-<p>(E)释放连接资源。</p>
-<p>(4)返回处理结果将最终的处理结果返回。</p>
-<p>来源:<a href="http://baike.so.com/doc/5582692-5795562.html" target="_blank">Mybatis360百科</a></p>
+        <p>用过Eclipse开发的Android工程师都知道原生的模拟器非常NB啊，每次出场就跟古代的大姑娘上轿一样，要先打扮好，然后迈着三寸金莲慢慢悠悠出来，实在受不了了，所以干脆找个可替代的产品吧，想起前阵子在微博上看到的Genymotion，于是今天就直接用上了，果断速度杠杠滴啊，写android的小伙伴们可以果断走起了，注意：mac下写android的小伙伴要耐心点儿，如果你升级了10.9的话，会有意想不到的兼容性问题发生，本人血的教训已经可以足够作为证明了。<br>准备工作<br>首先到Genymotion官网上注册一个账号，传送门在此，注意，该账号并非只用于下载所需程序，还会在你新建不同的Devices时要用到，所以要记牢。注册完账号之后，登录，然后就可以直接到下载页面（下载传送门在此）去下载你所需要的东西了，基本上我们需要如下的几个程序或者插件：<br>VirtualBox(win系统下Genymotion官方有Genymotion Installer With VirtualBox版本的，可直接下载，mac osx或者Linux系统需要单独安装VirtualBox)<br>Genymotion Installer<br><a id="more"></a><br>当然，还需要额外的Eclipse或者IntelliJ IDEA的插件，这个可以下载完再安装，也可以直接在线安装。<br>准备就绪之后就开始一路next安装完Genymotion Installer，然后打开Genymotion程序，如下图：<br>[图片]</p>
+<p>点击Settings，指定下你的android的SDK位置，我自己的电脑上安装了Android Studio和Eclipse，所以这里通用了同一个SDK，如下图：<br>[图片]</p>
+<p>完成了之后，接下来，我们还要在Eclipse中安装相对应的插件：<br>点击Help-&gt;Install New Software, 输入如下网址，<a href="http://plugins.genymotion.com/eclipse，然后安装即可。" target="_blank" rel="external">http://plugins.genymotion.com/eclipse，然后安装即可。</a><br>然后我们就会发现在Eclipse中多了这么一个按钮，这个就是Genymotion的Virtual Device Manager按钮<br>[图片]</p>
+<p>接下来，我们打开安装好的Genymotion的程序，点击add，添加一个设备，会弹出提示需要登录，输入文章开始的时候我们创建的账号和密码，然后在列表中选择我们要添加的设备信息，点击右下角的Add按钮即可添加一个设备。<br>需要注意的一点就是，Genymotion模拟器访问网络和原生的Android模拟器是不一样的，因为Genymotion模拟器是运行在VirtualBox虚拟机上的x86架构的Android版本（这也是它的开机速度远胜于原生模拟器的原因吧），所以如果你的应用需要联网的话，那么你需要查看一下你的VirtualBox的虚拟网卡了。</p>
 
       
     </div>
@@ -373,16 +347,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/01/Apache CXF详解.html" rel="next" title="关于webservice框架cxf遇到的一些问题">
-                <i class="fa fa-chevron-left"></i> 关于webservice框架cxf遇到的一些问题
+              <a href="/2016/08/25/4.html" rel="next" title="分治算法">
+                <i class="fa fa-chevron-left"></i> 分治算法
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/09/05/Mybatis源码分析之项目依赖.html" rel="prev" title="Myabtis 3.4.1源码分析之总体流程">
-                Myabtis 3.4.1源码分析之总体流程 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/09/01/2.html" rel="prev" title="关于webservice框架cxf遇到的一些问题">
+                关于webservice框架cxf遇到的一些问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -451,7 +425,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
