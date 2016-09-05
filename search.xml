@@ -6,11 +6,11 @@
     <entry>
       <title><![CDATA[Myabtis 3.4.1源码分析之总体流程]]></title>
       <url>http://yoursite.com/2016/09/05/Mybatis%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90.html</url>
-      <content type="html"><![CDATA[<p>前言：MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。<br><a id="more"></a><br>总体流程</p>
+      <content type="html"><![CDATA[<p>前言：MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。</p>
+<p>总体流程</p>
 <p>(1)加载配置并初始化</p>
 <p>触发条件:加载配置文件</p>
-<p>将SQL的配置信息加载成为一个个MappedStatement对象(包括了传入参数映射配置、执行的SQL语句、结果映射配置)，存储在内存中。</p>
-<p>(2)接收调用请求</p>
+<p>将SQL的配置信息加载成为一个个MappedStatement对象(包括了传入参数映射配置、执行的SQL语句、结果映射配置)，存储在内存中。<br><a id="more"></a><br>(2)接收调用请求</p>
 <p>触发条件:调用Mybatis提供的API</p>
 <p>传入参数:为SQL的ID和传入参数对象</p>
 <p>处理过程:将请求传递给下层的请求处理层进行处理。</p>

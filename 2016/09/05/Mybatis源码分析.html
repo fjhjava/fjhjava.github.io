@@ -84,16 +84,28 @@
 
 
 
-<meta name="description" content="前言：MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。">
+<meta name="description" content="前言：MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。
+总体流程
+(1)加载配置并初始化
+触发条件:加载配置文件
+将SQL的配置信息加载成为一个个MappedStatement对象(包括了传入参数映射配置、执行的SQ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Myabtis 3.4.1源码分析之总体流程">
 <meta property="og:url" content="http://yoursite.com/2016/09/05/Mybatis源码分析.html">
 <meta property="og:site_name" content="付俊豪GitHub博客">
-<meta property="og:description" content="前言：MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。">
-<meta property="og:updated_time" content="2016-09-05T02:33:15.149Z">
+<meta property="og:description" content="前言：MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。
+总体流程
+(1)加载配置并初始化
+触发条件:加载配置文件
+将SQL的配置信息加载成为一个个MappedStatement对象(包括了传入参数映射配置、执行的SQ">
+<meta property="og:updated_time" content="2016-09-05T02:36:02.984Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Myabtis 3.4.1源码分析之总体流程">
-<meta name="twitter:description" content="前言：MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。">
+<meta name="twitter:description" content="前言：MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。
+总体流程
+(1)加载配置并初始化
+触发条件:加载配置文件
+将SQL的配置信息加载成为一个个MappedStatement对象(包括了传入参数映射配置、执行的SQ">
 
 
 
@@ -318,11 +330,11 @@
       
 
       
-        <p>前言：MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。<br><a id="more"></a><br>总体流程</p>
+        <p>前言：MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。</p>
+<p>总体流程</p>
 <p>(1)加载配置并初始化</p>
 <p>触发条件:加载配置文件</p>
-<p>将SQL的配置信息加载成为一个个MappedStatement对象(包括了传入参数映射配置、执行的SQL语句、结果映射配置)，存储在内存中。</p>
-<p>(2)接收调用请求</p>
+<p>将SQL的配置信息加载成为一个个MappedStatement对象(包括了传入参数映射配置、执行的SQL语句、结果映射配置)，存储在内存中。<br><a id="more"></a><br>(2)接收调用请求</p>
 <p>触发条件:调用Mybatis提供的API</p>
 <p>传入参数:为SQL的ID和传入参数对象</p>
 <p>处理过程:将请求传递给下层的请求处理层进行处理。</p>
