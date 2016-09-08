@@ -4,6 +4,96 @@
   
     
     <entry>
+      <title></title>
+      <url>http://yoursite.com/2016/09/08/15.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title></title>
+      <url>http://yoursite.com/2016/09/08/14.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title></title>
+      <url>http://yoursite.com/2016/09/08/13.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[struts2详解之OGNL和类型转换]]></title>
+      <url>http://yoursite.com/2016/09/08/12.html</url>
+      <content type="html"><![CDATA[<a id="more"></a>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[struts2详解之拦截器]]></title>
+      <url>http://yoursite.com/2016/09/08/11.html</url>
+      <content type="html"><![CDATA[<a id="more"></a>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[struts2详解之Action]]></title>
+      <url>http://yoursite.com/2016/09/08/10.html</url>
+      <content type="html"><![CDATA[<p>Action动作包含了业务逻辑、承载数据、选择返回的结果<br>是框架的核心。<br><a id="more"></a><br>1、封装了业务逻辑单元<br>使用execute()方法来实现这个功能<br>public String execute(){<br>    //业务逻辑调用<br>    return “SUCCESS”;<br>}<br>这个方法只关注与请求有关的业务逻辑。<br>复杂的业务逻辑卡哇伊封装成一个业务组件，利用依赖注入把组件注入到动作里，可以通过Spring集成注入组件的技术。</p>
+<p>2、为数据传输提供场所(三种方式)<br>一、把承载的数据实现为java bean属性(其实就是通过getter,setter方法操作属性)<br>在action里<br>private String name;<br>getName();<br>setName();<br>二、使用对象支持的属性。<br>三、使用模型驱动公开数据</p>
+<p>public class LoginAction extends ActionSupport implements ModelDriven{<br>    private User user=new User();<br>    …<br>   //复写getModel()方法<br>    public Object getModel(){<br>    return user;<br>    }<br>}</p>
+<p>注意：模型驱动的动作在execute()方法在调用的时候，框架已经获得了对象模型的引用，请求的过程当中会一直使用他，如果动作内部改变了模型字段，可能会导致一些数据不一致的问题。<br>3、动作为结果路由选择返回控制字符串</p>
+<action name="login"><br>    <result name="success"><br>        /success.jsp<br>    </result><br>    <result name="error"><br>        /error.jsp<br>    </result><br></action>
+
+<p>SUCCESS就是一个结果组件的名字。</p>
+<p>structs2的包属性：<br>Name：包的名字<br>namespace:包内所有动作的命名空间 映射的URL就必须带上命名空间来访问<br>extends:被继承的父包  这对默认组件的使用起到很大的作用。extends structs-default<br>（！省略了继承等于拒绝了框架的核心功能!）</p>
+<p>实现动作（Action接口）<br>ActionSupport类提供了Action接口和其他几个有用接口的默认实现类.</p>
+<p>基于拦截器的文件上传<br>首先要在配置文件里追加到默认拦截器栈</p>
+<p><interceptor-ref name="fileUpload">要定义在param之前</interceptor-ref></p>
+<interceptor-ref name="param">
+
+<p>fileUpload拦截器提供的请求参数：<br>File—-&gt;被上传的文件<br>ContentType    String—&gt;文件的内容类型<br>FileName       String—&gt;存储在服务器上的上传文件名</p>
+<p>前端：<br><s:form action="upload" method="post" enctype="multipart/form-data"><br><s:file name="file" label="上传文件"><br><s:submit><br></s:submit></s:file></s:form><br>后台：<br>java bean 封装文件的参数：</p>
+<hr>
+<p>private File file;<br>private String contentType;<br>private String fileName;</p>
+<hr>
+<p>多个文件的话就是File[]、String[]、String[]</p>
+</interceptor-ref>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[struts2详解之声明式架构（两种配置）]]></title>
+      <url>http://yoursite.com/2016/09/08/9.html</url>
+      <content type="html"><![CDATA[<p>一是xml文件</p>
+<action name="login"><br>    <result name="success"><br>        /success.jsp<br>    </result><br>    <result name="error"><br>        /error.jsp<br>    </result><br></action>
+
+<p>这个文件驻留在classpath路径下<br><a id="more"></a><br>二是注解方式<br>@Results({<br>@Result(name=”success”,value=”/success.jsp”),<br>@result(name=”error” ,value=”/error/jsp”)<br>})<br>public class Login{<br>    …<br>}</p>
+<p>默认是.action结尾。</p>
+<p>约定大于配置的展望^_^</p>
+<p>有一些不需要开发人员声明的默认组件的配置，在structs-defauult.xml文件里。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[struts2详解之原理模式]]></title>
+      <url>http://yoursite.com/2016/09/05/8.html</url>
+      <content type="html"><![CDATA[<p>服务架构图：</p>
+<pre><code>Struts2（具体实现）
+    ^
+    |
+java servlet规范
+    ^
+    |
+底层Http(基于底层)
+</code></pre><a id="more"></a>
+<p>java servlet api解决了底层/服务器问题，但没有提供应用程序级别的问题，比如说<br>1、请求参数到java数据类型的绑定（从请求中拿出的都是字符串类型，但需要转化成java的数据类型，很费时、麻烦）<br>2、访问层的业务逻辑（形成一个一致的工作流，面向动作的框架Action）<br>3、访问数据层<br>4、表示层（视图复杂的javascript，国际化的呈现视图、有太多的可复用代码）<br>5、国际化和本地化的支持</p>
+<p>MVC模式有三个关注点：模型、视图、控制器<br>在Structs2当中通过action、result、FilterDispatcher来实现。</p>
+<p>工作流： web客户端   ^<br>            |         \<br>      请求  |          \<br>            |           \<br>            v            \    返回视图<br>        控制器<br>            |             \<br> 调用动作   |              \<br>            v               \<br>        模型————-&gt; 视图<br>                选择结果</p>
+<p>控制器：FilterDispatcher就是一个servlet过滤器，拦截所有的请求，根据配置文件里的URL映射决定哪个动作处理这个请求，可以通过xml或者注解的方式来完成。</p>
+<p>动作：Action主要有两个作用，一是封装了业务逻辑的调用（组合的方式），二是用于数据传输。</p>
+<p>视图（结果）:Result视图就是用户看见的，通常是jsp页面、模版技术呈现的视图等。</p>
+<p>structs2工作原理：<br>框架不仅包含了MVC组件，可以说在其他参与请求处理的组件（拦截器、OGNL、ValuStack值栈）的帮助下，提供了更为整洁的MVC实现。<br><a href="http://i7.qhmsg.com/t017741e98dd9ffd37b.jpg" target="_bank">原理图</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Myabtis 3.4.1源码分析之代码结构]]></title>
       <url>http://yoursite.com/2016/09/05/7.html</url>
       <content type="html"><![CDATA[<p>准备：<br>1、下载好源码<a href="https://github.com/mybatis/mybatis-3/archive/mybatis-3.4.1.tar.gz" target="_blank" rel="external">Source code (zip)</a><br>2、将源码导入Eclipse当中<br><a id="more"></a><br>开始：<br>先来看下项目的目录结构<br>ibatis<br>             ├─annotations<br>             ├─binding<br>             ├─builder<br>             │  ├─annotation<br>             │  └─xml<br>             ├─cache<br>             │  ├─decorators<br>             │  └─impl<br>             ├─cursor<br>             │  └─defaults<br>             ├─datasource<br>             │  ├─jndi<br>             │  ├─pooled<br>             │  └─unpooled<br>             ├─exceptions<br>             ├─executor<br>             │  ├─keygen<br>             │  ├─loader<br>             │  │  ├─cglib<br>             │  │  └─javassis<br>             │  ├─parameter<br>             │  ├─result<br>             │  ├─resultset<br>             │  └─statement<br>             ├─io<br>             ├─jdbc<br>             ├─logging<br>             │  ├─commons<br>             │  ├─jdbc<br>             │  ├─jdk14<br>             │  ├─log4j<br>             │  ├─log4j2<br>             │  ├─nologging<br>             │  ├─slf4j<br>             │  └─stdout<br>             ├─mapping<br>             ├─parsing<br>             ├─plugin<br>             ├─reflection<br>             │  ├─factory<br>             │  ├─invoker<br>             │  ├─property<br>             │  └─wrapper<br>             ├─scripting<br>             │  ├─defaults<br>             │  └─xmltags<br>             ├─session<br>             │  └─defaults<br>             ├─transaction<br>             │  ├─jdbc<br>             │  └─managed<br>             └─type</p>

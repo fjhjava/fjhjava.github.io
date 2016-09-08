@@ -84,12 +84,37 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="付俊豪GitHub博客">
-<meta property="og:url" content="http://yoursite.com/archives/2016/09/index.html">
+<meta name="description" content="服务架构图：
+Struts2（具体实现）
+    ^
+    |
+java servlet规范
+    ^
+    |
+底层Http(基于底层)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="struts2详解之原理模式">
+<meta property="og:url" content="http://yoursite.com/2016/09/05/8.html">
 <meta property="og:site_name" content="付俊豪GitHub博客">
+<meta property="og:description" content="服务架构图：
+Struts2（具体实现）
+    ^
+    |
+java servlet规范
+    ^
+    |
+底层Http(基于底层)">
+<meta property="og:updated_time" content="2016-09-08T04:35:24.917Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="付俊豪GitHub博客">
+<meta name="twitter:title" content="struts2详解之原理模式">
+<meta name="twitter:description" content="服务架构图：
+Struts2（具体实现）
+    ^
+    |
+java servlet规范
+    ^
+    |
+底层Http(基于底层)">
 
 
 
@@ -110,9 +135,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2016/09/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/05/8.html"/>
 
-  <title> 归档 | 付俊豪GitHub博客 </title>
+  <title> struts2详解之原理模式 | 付俊豪GitHub博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -133,7 +158,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -234,403 +259,154 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 15 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
-
-      
-      
-      
-
-      
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
-        </div>
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/09/08/15.html" itemprop="url">
-              
-                <span itemprop="name">未命名</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-08T04:02:07Z"
-              content="2016-09-08" >
-          09-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/09/08/14.html" itemprop="url">
-              
-                <span itemprop="name">未命名</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-08T04:01:48Z"
-              content="2016-09-08" >
-          09-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/09/08/13.html" itemprop="url">
-              
-                <span itemprop="name">未命名</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-08T04:01:37Z"
-              content="2016-09-08" >
-          09-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/09/08/12.html" itemprop="url">
-              
-                <span itemprop="name">struts2详解之OGNL和类型转换</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-08T04:01:15Z"
-              content="2016-09-08" >
-          09-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/09/08/11.html" itemprop="url">
-              
-                <span itemprop="name">struts2详解之拦截器</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-08T04:01:09Z"
-              content="2016-09-08" >
-          09-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/09/08/10.html" itemprop="url">
-              
-                <span itemprop="name">struts2详解之Action</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-08T04:01:04Z"
-              content="2016-09-08" >
-          09-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/09/08/9.html" itemprop="url">
-              
-                <span itemprop="name">struts2详解之声明式架构（两种配置）</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-08T03:54:22Z"
-              content="2016-09-08" >
-          09-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/09/05/8.html" itemprop="url">
-              
-                <span itemprop="name">struts2详解之原理模式</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-05T02:55:49Z"
-              content="2016-09-05" >
-          09-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/09/05/7.html" itemprop="url">
-              
-                <span itemprop="name">Myabtis 3.4.1源码分析之代码结构</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-05T02:40:14Z"
-              content="2016-09-05" >
-          09-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/09/05/6.html" itemprop="url">
-              
-                <span itemprop="name">Myabtis 3.4.1源码分析之总体流程</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-05T02:29:20Z"
-              content="2016-09-05" >
-          09-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
 
   
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2016/09/page/2/">2</a><a class="extend next" rel="next" href="/archives/2016/09/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                struts2详解之原理模式
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-05T10:55:49+08:00" content="2016-09-05">
+              2016-09-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
 
 
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>服务架构图：</p>
+<pre><code>Struts2（具体实现）
+    ^
+    |
+java servlet规范
+    ^
+    |
+底层Http(基于底层)
+</code></pre><a id="more"></a>
+<p>java servlet api解决了底层/服务器问题，但没有提供应用程序级别的问题，比如说<br>1、请求参数到java数据类型的绑定（从请求中拿出的都是字符串类型，但需要转化成java的数据类型，很费时、麻烦）<br>2、访问层的业务逻辑（形成一个一致的工作流，面向动作的框架Action）<br>3、访问数据层<br>4、表示层（视图复杂的javascript，国际化的呈现视图、有太多的可复用代码）<br>5、国际化和本地化的支持</p>
+<p>MVC模式有三个关注点：模型、视图、控制器<br>在Structs2当中通过action、result、FilterDispatcher来实现。</p>
+<p>工作流： web客户端   ^<br>            |         \<br>      请求  |          \<br>            |           \<br>            v            \    返回视图<br>        控制器<br>            |             \<br> 调用动作   |              \<br>            v               \<br>        模型————-&gt; 视图<br>                选择结果</p>
+<p>控制器：FilterDispatcher就是一个servlet过滤器，拦截所有的请求，根据配置文件里的URL映射决定哪个动作处理这个请求，可以通过xml或者注解的方式来完成。</p>
+<p>动作：Action主要有两个作用，一是封装了业务逻辑的调用（组合的方式），二是用于数据传输。</p>
+<p>视图（结果）:Result视图就是用户看见的，通常是jsp页面、模版技术呈现的视图等。</p>
+<p>structs2工作原理：<br>框架不仅包含了MVC组件，可以说在其他参与请求处理的组件（拦截器、OGNL、ValuStack值栈）的帮助下，提供了更为整洁的MVC实现。<br><a href="http://i7.qhmsg.com/t017741e98dd9ffd37b.jpg" target="_bank">原理图</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/05/7.html" rel="next" title="Myabtis 3.4.1源码分析之代码结构">
+                <i class="fa fa-chevron-left"></i> Myabtis 3.4.1源码分析之代码结构
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/08/9.html" rel="prev" title="struts2详解之声明式架构（两种配置）">
+                struts2详解之声明式架构（两种配置） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -638,6 +414,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -657,8 +437,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -735,6 +524,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -831,11 +631,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
 
 
   
