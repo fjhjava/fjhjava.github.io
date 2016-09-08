@@ -30,7 +30,8 @@
     <entry>
       <title><![CDATA[struts2详解之拦截器]]></title>
       <url>http://yoursite.com/2016/09/08/11.html</url>
-      <content type="html"><![CDATA[<a id="more"></a>]]></content>
+      <content type="html"><![CDATA[<p>拦截器完成各种任务时，我们称之为横切、预处理、后加工。<br>比如，日志记录就是一个横切关注点。他不跟模型层交互，他不是某个动作所特有，他横向关联所有的动作。<br><a id="more"></a></p>
+]]></content>
     </entry>
     
     <entry>
