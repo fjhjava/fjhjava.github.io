@@ -4,33 +4,52 @@
   
     
     <entry>
-      <title></title>
-      <url>http://yoursite.com/2016/09/08/15.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
-      <title></title>
+      <title><![CDATA[struts2详解之结果]]></title>
       <url>http://yoursite.com/2016/09/08/14.html</url>
-      <content type="html"></content>
+      <content type="html"><![CDATA[<p>构建struts2 Ajax应用组件</p>
+<p>1、JSONResult编码<br>必须实现Result接口</p>
+]]></content>
     </entry>
     
     <entry>
-      <title></title>
+      <title><![CDATA[struts2详解之标签]]></title>
       <url>http://yoursite.com/2016/09/08/13.html</url>
-      <content type="html"></content>
+      <content type="html"><![CDATA[<p>OGNL与ActionContext<br><a id="more"></a><br>ActionContext包含了框架的请求处理过程中可以访问的所有数据，包含从应用程序数据到会话作用域或者应用程序作用域的映射。<br>所有特定的应用程序的数据，都存储在ValueStack上，他是ActionContext中的一个对象。</p>
+<p>ActionContext包含的对象<br>——————————————————————————————————————<br>ValueStack  paramters  application</p>
+<p>session     attr       request</p>
+<hr>
+<p>OGNL如何选择根元素呢？</p>
+<p>#session[‘user’]<br>通过#操作符主动命名Actioncontext中的会话映射</p>
+<p>ValueStack是一个虚拟的对象。<br>里面包含了很多的属性，如果属性名重合，那么就会被栈的上层同名属性所覆盖。</p>
+<p>标签语法API</p>
+<p>1、Jsp语法：<br>先声明taglib<br>&lt;%@taglib prefix=”s” uri=”/struts-tags”%&gt;<br>&lt;\s:property value=”name”/&gt;</p>
+<p>同样也支持Velocity语法、FreeMarker语法</p>
+<p>其他标签不在赘述….</p>
+]]></content>
     </entry>
     
     <entry>
       <title><![CDATA[struts2详解之OGNL和类型转换]]></title>
       <url>http://yoursite.com/2016/09/08/12.html</url>
-      <content type="html"><![CDATA[<a id="more"></a>]]></content>
+      <content type="html"><![CDATA[<p>OGNL是什么？（对象图导航语言）<br><a id="more"></a><br>像是基于字符串的HTTP输入/输出与java的内部处理的粘合剂。</p>
+<p>内建的类型转换器<br>1、立即可用的类型转换器<br>String/String<br>boolean/Boolean<br>char/charactor<br>int/Integer、float/Float、double/Double<br>Date<br>array<br>List默认情况下使用String填充<br>Map默认情况下使用String填充</p>
+<p>自定义类型转换器：<br>继承StrutsTypeConverter<br>还需要配置….</p>
+]]></content>
     </entry>
     
     <entry>
       <title><![CDATA[struts2详解之拦截器]]></title>
       <url>http://yoursite.com/2016/09/08/11.html</url>
       <content type="html"><![CDATA[<p>拦截器完成各种任务时，我们称之为横切、预处理、后加工。<br>比如，日志记录就是一个横切关注点。他不跟模型层交互，他不是某个动作所特有，他横向关联所有的动作。<br><a id="more"></a></p>
+<p>框架不直接调用动作的execute()方法，而是创建一个ActionInvocation的对象，他封装了动作和一系列被配置在动作执行之前和之后的拦截器。<br>ActionInvocation<br>——————————————————————————————————————————————————————&gt;Action<br>                                                         |<br>exception-&gt;modeldriven-&gt;fileUpload-&gt;params-&gt;workFolw     |<br>                                                         v<br>&lt;——————————————————————————————————————————————————————result</p>
+<p>拦截器强大的功能之一就是改变工作流。</p>
+<p>拦截器工作原理：<br>总指挥：ActionInvocation指挥着动作的完整执行，以及与之相关的拦截器栈的顺序触发。</p>
+<p>拦截器栈是递归调用的，因为在第一次调用ActionInvocation的invoke()方法，ActionInvocation通过拦截器的intercept()方法把控制转交给拦截器栈里的第一个拦截器，重要的是，intercept()方法把ActionInvocation实例作为一个参数。</p>
+<p>拦截器触发时：<br>1、做一些预处理<br>2、通过调用invoke()方法把控制转交给下一个拦截器，最后直到动作，或者通过返回一个控制字符串中断执行。<br>3、做一些后加工。</p>
+<p>default包里的一个TimerInterceptor的intecept()方法：<br>public String intercept(ActionInvocation invocation)throws Exception{<br>    long startTime=System.currentTimeMillis(); //预处理<br>    String result=invocation.invoke();//invoke()方法<br>    long executeTime=System.currentTimeMills()-startTime;//后加工<br>    ….<br>    return result;//让递归返回拦截器栈<br>}<br>调用invoke()方法后，等待这个方法的返回结果。</p>
+<p>工作流拦截器：<br>workflow拦截器使用params调整拦截器的执行<br>可以使用以下几个参数：<br>alwaysInvokeValidate(true或者false，默认true，意思是validate()方法将会被调用)<br>inputResultName(验证失败时选择结果的名字，默认是Action.INPUT)<br>excludeMethods(workflow拦截器不应该执行的方法名，可以省略动作的某一个方法的验证检查)</p>
+<p><interceptor-ref name="workflow"><br>    <param name="excludeMethods">input,back,cancel,browse<br></interceptor-ref></p>
+<p>自定义拦截器：<br>1、实现Interceptor接口<br>2、声明拦截器并构建新的默认栈</p>
 ]]></content>
     </entry>
     

@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/09/08/11.html">
 <meta property="og:site_name" content="付俊豪GitHub博客">
 <meta property="og:description" content="拦截器完成各种任务时，我们称之为横切、预处理、后加工。比如，日志记录就是一个横切关注点。他不跟模型层交互，他不是某个动作所特有，他横向关联所有的动作。">
-<meta property="og:updated_time" content="2016-09-08T06:02:00.231Z">
+<meta property="og:updated_time" content="2016-09-08T06:50:44.562Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="struts2详解之拦截器">
 <meta name="twitter:description" content="拦截器完成各种任务时，我们称之为横切、预处理、后加工。比如，日志记录就是一个横切关注点。他不跟模型层交互，他不是某个动作所特有，他横向关联所有的动作。">
@@ -319,6 +319,15 @@
 
       
         <p>拦截器完成各种任务时，我们称之为横切、预处理、后加工。<br>比如，日志记录就是一个横切关注点。他不跟模型层交互，他不是某个动作所特有，他横向关联所有的动作。<br><a id="more"></a></p>
+<p>框架不直接调用动作的execute()方法，而是创建一个ActionInvocation的对象，他封装了动作和一系列被配置在动作执行之前和之后的拦截器。<br>ActionInvocation<br>——————————————————————————————————————————————————————&gt;Action<br>                                                         |<br>exception-&gt;modeldriven-&gt;fileUpload-&gt;params-&gt;workFolw     |<br>                                                         v<br>&lt;——————————————————————————————————————————————————————result</p>
+<p>拦截器强大的功能之一就是改变工作流。</p>
+<p>拦截器工作原理：<br>总指挥：ActionInvocation指挥着动作的完整执行，以及与之相关的拦截器栈的顺序触发。</p>
+<p>拦截器栈是递归调用的，因为在第一次调用ActionInvocation的invoke()方法，ActionInvocation通过拦截器的intercept()方法把控制转交给拦截器栈里的第一个拦截器，重要的是，intercept()方法把ActionInvocation实例作为一个参数。</p>
+<p>拦截器触发时：<br>1、做一些预处理<br>2、通过调用invoke()方法把控制转交给下一个拦截器，最后直到动作，或者通过返回一个控制字符串中断执行。<br>3、做一些后加工。</p>
+<p>default包里的一个TimerInterceptor的intecept()方法：<br>public String intercept(ActionInvocation invocation)throws Exception{<br>    long startTime=System.currentTimeMillis(); //预处理<br>    String result=invocation.invoke();//invoke()方法<br>    long executeTime=System.currentTimeMills()-startTime;//后加工<br>    ….<br>    return result;//让递归返回拦截器栈<br>}<br>调用invoke()方法后，等待这个方法的返回结果。</p>
+<p>工作流拦截器：<br>workflow拦截器使用params调整拦截器的执行<br>可以使用以下几个参数：<br>alwaysInvokeValidate(true或者false，默认true，意思是validate()方法将会被调用)<br>inputResultName(验证失败时选择结果的名字，默认是Action.INPUT)<br>excludeMethods(workflow拦截器不应该执行的方法名，可以省略动作的某一个方法的验证检查)</p>
+<p><interceptor-ref name="workflow"><br>    <param name="excludeMethods">input,back,cancel,browse<br></interceptor-ref></p>
+<p>自定义拦截器：<br>1、实现Interceptor接口<br>2、声明拦截器并构建新的默认栈</p>
 
       
     </div>
@@ -422,7 +431,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

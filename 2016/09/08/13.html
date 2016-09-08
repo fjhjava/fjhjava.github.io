@@ -84,13 +84,16 @@
 
 
 
+<meta name="description" content="OGNL与ActionContext">
 <meta property="og:type" content="article">
-<meta property="og:title" content="付俊豪GitHub博客">
+<meta property="og:title" content="struts2详解之标签">
 <meta property="og:url" content="http://yoursite.com/2016/09/08/13.html">
 <meta property="og:site_name" content="付俊豪GitHub博客">
-<meta property="og:updated_time" content="2016-09-08T04:01:15.670Z">
+<meta property="og:description" content="OGNL与ActionContext">
+<meta property="og:updated_time" content="2016-09-08T07:25:28.931Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="付俊豪GitHub博客">
+<meta name="twitter:title" content="struts2详解之标签">
+<meta name="twitter:description" content="OGNL与ActionContext">
 
 
 
@@ -113,7 +116,7 @@
 
   <link rel="canonical" href="http://yoursite.com/2016/09/08/13.html"/>
 
-  <title>  | 付俊豪GitHub博客 </title>
+  <title> struts2详解之标签 | 付俊豪GitHub博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -256,7 +259,7 @@
             
             
               
-                
+                struts2详解之标签
               
             
           </h1>
@@ -273,6 +276,25 @@
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -296,7 +318,18 @@
       
 
       
-        
+        <p>OGNL与ActionContext<br><a id="more"></a><br>ActionContext包含了框架的请求处理过程中可以访问的所有数据，包含从应用程序数据到会话作用域或者应用程序作用域的映射。<br>所有特定的应用程序的数据，都存储在ValueStack上，他是ActionContext中的一个对象。</p>
+<p>ActionContext包含的对象<br>——————————————————————————————————————<br>ValueStack  paramters  application</p>
+<p>session     attr       request</p>
+<hr>
+<p>OGNL如何选择根元素呢？</p>
+<p>#session[‘user’]<br>通过#操作符主动命名Actioncontext中的会话映射</p>
+<p>ValueStack是一个虚拟的对象。<br>里面包含了很多的属性，如果属性名重合，那么就会被栈的上层同名属性所覆盖。</p>
+<p>标签语法API</p>
+<p>1、Jsp语法：<br>先声明taglib<br>&lt;%@taglib prefix=”s” uri=”/struts-tags”%&gt;<br>&lt;\s:property value=”name”/&gt;</p>
+<p>同样也支持Velocity语法、FreeMarker语法</p>
+<p>其他标签不在赘述….</p>
+
       
     </div>
 
@@ -329,8 +362,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/09/08/14.html" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/09/08/14.html" rel="prev" title="struts2详解之结果">
+                struts2详解之结果 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -399,7 +432,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
