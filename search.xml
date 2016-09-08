@@ -62,7 +62,7 @@
       <title><![CDATA[struts2详解之声明式架构（两种配置）]]></title>
       <url>http://yoursite.com/2016/09/08/9.html</url>
       <content type="html"><![CDATA[<p>一是xml文件</p>
-<action name="login"><br>    <result name="success"><br>        /success.jsp<br>    </result><br>    <result name="error"><br>        /error.jsp<br>    </result><br></action>
+<p><br><action name="login"><br>    <result name="success"><br>        /success.jsp<br>    </result><br>    <result name="error"><br>        /error.jsp<br>    </result><br></action><br></p>
 
 <p>这个文件驻留在classpath路径下<br><a id="more"></a><br>二是注解方式<br>@Results({<br>@Result(name=”success”,value=”/success.jsp”),<br>@result(name=”error” ,value=”/error/jsp”)<br>})<br>public class Login{<br>    …<br>}</p>
 <p>默认是.action结尾。</p>
