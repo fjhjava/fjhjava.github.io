@@ -4,6 +4,79 @@
   
     
     <entry>
+      <title><![CDATA[数据结构详解之哈希表]]></title>
+      <url>http://yoursite.com/2016/10/05/19.html</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<p>大忌！！！照本宣科！</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[数据结构详解之图]]></title>
+      <url>http://yoursite.com/2016/10/05/18.html</url>
+      <content type="html"><![CDATA[<p>一、图的分类</p>
+<p>连通图：<br>    存在至少一条路径可以连接起所有的顶点。</p>
+<p>非连通图：反之</p>
+<p>有向图：</p>
+<p>带权图：</p>
+<a id="more"></a>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Huffman编码问题]]></title>
+      <url>http://yoursite.com/2016/10/04/17.html</url>
+      <content type="html"><![CDATA[<p>哈夫曼编码问题：<br>    是一种数据压缩技术。通常可以省略20%~90%的空间。</p>
+<p>前缀码：<br>    无论是定长编码还是变长编码，都具有一个共同的特性，即没有一个编码字<br>变成另一个编码字的前缀。<br><a id="more"></a><br>示例：<br>               a    b    c   d     e     f</p>
+<p>频率（千字）  45    13    12    16     9      5  </p>
+<p>定长编码     000    001   010   011   100   101    </p>
+<p>变长编码      0     101   100   111   1101  1100</p>
+<p>abc编码：0.101.100,’.’表示连接<br>串’001011101’分解成：0.0.101.1101 ,表示aabe</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[23种设计模式之工厂方法]]></title>
+      <url>http://yoursite.com/2016/10/04/16.html</url>
+      <content type="html"><![CDATA[<p>工厂方法模式：<br>    定义一个用于创建对象的接口，使类的实例延迟它的子类。</p>
+<p>适用：<br>    1、一个类不知道他所创建的类时。<br>    2、希望类的子类来决定如何实现类的实例的时候。<br>    3、将创建对象的责任委托给多个帮助类中的某一个，并将帮助子类信息局部化的时候。<br><a id="more"></a><br>实例代码：Java<br>    public interface Work {</p>
+<pre><code>void doWork(String work);
+</code></pre><p>}</p>
+<p>public class StudentWork implements Work{</p>
+<pre><code>@Override
+public void doWork(String work) {
+    System.out.println(&quot;学生&quot;+work);
+}
+</code></pre><p>}</p>
+<p>public interface WorkFactory {</p>
+<pre><code>Work getWork();
+</code></pre><p>}</p>
+<p>public class StudentWorkFactory implements WorkFactory{</p>
+<pre><code>@Override
+public Work getWork() {
+    return new StudentWork();
+}
+</code></pre><p>}</p>
+<p>测试结果：<br>public class Test {</p>
+<pre><code>public static void main(String[] args) {
+    WorkFactory factory = new StudentWorkFactory();
+    factory.getWork().doWork(&quot;写作业&quot;);
+}
+</code></pre><p>}</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[23种设计模式之概述]]></title>
+      <url>http://yoursite.com/2016/10/04/15.html</url>
+      <content type="html"><![CDATA[<p>Java23种设计模式分类：<br>一、创建型模式<br>    工厂模式、抽象工厂、建造者模式、单例模式、<br>    原型模式</p>
+<a id="more"></a>
+<p>二、结构型模式<br>    适配器模式、桥接模式、组合模式、装饰模式、<br>    外观模式、享元模式、代理模式</p>
+<p>三、行为型模式<br>    责任链模式、命令模式、解释器模式、迭代器模式、<br>    中介者模式、备忘录模式、观察者模式、状态模式、<br>    策略模式、模版方法、访问者模式</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[struts2详解之结果]]></title>
       <url>http://yoursite.com/2016/09/08/14.html</url>
       <content type="html"><![CDATA[<p>构建struts2 Ajax应用组件</p>

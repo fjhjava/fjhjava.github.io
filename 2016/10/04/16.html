@@ -84,19 +84,19 @@
 
 
 
-<meta name="description" content="构建struts2 Ajax应用组件
-1、JSONResult编码必须实现Result接口">
+<meta name="description" content="工厂方法模式：    定义一个用于创建对象的接口，使类的实例延迟它的子类。
+适用：    1、一个类不知道他所创建的类时。    2、希望类的子类来决定如何实现类的实例的时候。    3、将创建对象的责任委托给多个帮助类中的某一个，并将帮助子类信息局部化的时候。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="struts2详解之结果">
-<meta property="og:url" content="http://yoursite.com/2016/09/08/14.html">
+<meta property="og:title" content="23种设计模式之工厂方法">
+<meta property="og:url" content="http://yoursite.com/2016/10/04/16.html">
 <meta property="og:site_name" content="付俊豪GitHub博客">
-<meta property="og:description" content="构建struts2 Ajax应用组件
-1、JSONResult编码必须实现Result接口">
-<meta property="og:updated_time" content="2016-09-08T07:50:03.989Z">
+<meta property="og:description" content="工厂方法模式：    定义一个用于创建对象的接口，使类的实例延迟它的子类。
+适用：    1、一个类不知道他所创建的类时。    2、希望类的子类来决定如何实现类的实例的时候。    3、将创建对象的责任委托给多个帮助类中的某一个，并将帮助子类信息局部化的时候。">
+<meta property="og:updated_time" content="2016-10-04T06:59:53.440Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="struts2详解之结果">
-<meta name="twitter:description" content="构建struts2 Ajax应用组件
-1、JSONResult编码必须实现Result接口">
+<meta name="twitter:title" content="23种设计模式之工厂方法">
+<meta name="twitter:description" content="工厂方法模式：    定义一个用于创建对象的接口，使类的实例延迟它的子类。
+适用：    1、一个类不知道他所创建的类时。    2、希望类的子类来决定如何实现类的实例的时候。    3、将创建对象的责任委托给多个帮助类中的某一个，并将帮助子类信息局部化的时候。">
 
 
 
@@ -117,9 +117,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/08/14.html"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/04/16.html"/>
 
-  <title> struts2详解之结果 | 付俊豪GitHub博客 </title>
+  <title> 23种设计模式之工厂方法 | 付俊豪GitHub博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -262,7 +262,7 @@
             
             
               
-                struts2详解之结果
+                23种设计模式之工厂方法
               
             
           </h1>
@@ -274,8 +274,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-08T12:01:48+08:00" content="2016-09-08">
-              2016-09-08
+            <time itemprop="dateCreated" datetime="2016-10-04T14:14:14+08:00" content="2016-10-04">
+              2016-10-04
             </time>
           </span>
 
@@ -321,8 +321,31 @@
       
 
       
-        <p>构建struts2 Ajax应用组件</p>
-<p>1、JSONResult编码<br>必须实现Result接口</p>
+        <p>工厂方法模式：<br>    定义一个用于创建对象的接口，使类的实例延迟它的子类。</p>
+<p>适用：<br>    1、一个类不知道他所创建的类时。<br>    2、希望类的子类来决定如何实现类的实例的时候。<br>    3、将创建对象的责任委托给多个帮助类中的某一个，并将帮助子类信息局部化的时候。<br><a id="more"></a><br>实例代码：Java<br>    public interface Work {</p>
+<pre><code>void doWork(String work);
+</code></pre><p>}</p>
+<p>public class StudentWork implements Work{</p>
+<pre><code>@Override
+public void doWork(String work) {
+    System.out.println(&quot;学生&quot;+work);
+}
+</code></pre><p>}</p>
+<p>public interface WorkFactory {</p>
+<pre><code>Work getWork();
+</code></pre><p>}</p>
+<p>public class StudentWorkFactory implements WorkFactory{</p>
+<pre><code>@Override
+public Work getWork() {
+    return new StudentWork();
+}
+</code></pre><p>}</p>
+<p>测试结果：<br>public class Test {</p>
+<pre><code>public static void main(String[] args) {
+    WorkFactory factory = new StudentWorkFactory();
+    factory.getWork().doWork(&quot;写作业&quot;);
+}
+</code></pre><p>}</p>
 
       
     </div>
@@ -348,16 +371,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/08/13.html" rel="next" title="struts2详解之标签">
-                <i class="fa fa-chevron-left"></i> struts2详解之标签
+              <a href="/2016/10/04/15.html" rel="next" title="23种设计模式之概述">
+                <i class="fa fa-chevron-left"></i> 23种设计模式之概述
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/10/04/15.html" rel="prev" title="23种设计模式之概述">
-                23种设计模式之概述 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/10/04/17.html" rel="prev" title="Huffman编码问题">
+                Huffman编码问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
