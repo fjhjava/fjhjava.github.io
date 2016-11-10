@@ -4,10 +4,52 @@
   
     
     <entry>
-      <title><![CDATA[数据结构详解之哈希表]]></title>
+      <title><![CDATA[Java常用知识点总结-类加载机制]]></title>
+      <url>http://yoursite.com/2016/11/10/20.html</url>
+      <content type="html"><![CDATA[<a id="more"></a>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[设计模式之原型模式]]></title>
       <url>http://yoursite.com/2016/10/05/19.html</url>
-      <content type="html"><![CDATA[<a id="more"></a>
-<p>大忌！！！照本宣科！</p>
+      <content type="html"><![CDATA[<p>原型模式的意图是通过复制一个现有的对象来生成新的对象，而不是通过实例化的方式。</p>
+<a id="more"></a>
+<p>Java中利用克隆进行原型化:<br>    1、复制的机制：复制操作会提供原始对象属性的副本，还是副本与原始对象共享这些属性的值？</p>
+<p>示例代码：<br>public class Panel {</p>
+<pre><code>//属性
+private String color;
+
+private String backgroundColor;
+
+public String getColor() {
+    return color;
+}
+
+public void setColor(String color) {
+    this.color = color;
+}
+
+public String getBackgroundColor() {
+    return backgroundColor;
+}
+
+public void setBackgroundColor(String backgroundColor) {
+    this.backgroundColor = backgroundColor;
+}
+</code></pre><p>}</p>
+<p>//原型模式：不需要调用构造函数<br>public class OzPanel extends Panel implements Cloneable{</p>
+<pre><code>//不完善，默认复制了原始对象的所有属性，哪怕用不到某些属性
+public OzPanel copy1() throws CloneNotSupportedException{
+    return (OzPanel) this.clone();
+}
+
+//定制需要管理的属性
+public OzPanel copy2(){
+    OzPanel result=new OzPanel();
+    result.setColor(this.getColor());
+    return result;
+}
+</code></pre><p>}</p>
 ]]></content>
     </entry>
     

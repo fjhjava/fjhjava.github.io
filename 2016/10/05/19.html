@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="大忌！！！照本宣科！">
+<meta name="description" content="原型模式的意图是通过复制一个现有的对象来生成新的对象，而不是通过实例化的方式。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据结构详解之哈希表">
+<meta property="og:title" content="设计模式之原型模式">
 <meta property="og:url" content="http://yoursite.com/2016/10/05/19.html">
 <meta property="og:site_name" content="付俊豪GitHub博客">
-<meta property="og:description" content="大忌！！！照本宣科！">
-<meta property="og:updated_time" content="2016-10-05T07:02:27.574Z">
+<meta property="og:description" content="原型模式的意图是通过复制一个现有的对象来生成新的对象，而不是通过实例化的方式。">
+<meta property="og:updated_time" content="2016-10-07T06:54:16.377Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据结构详解之哈希表">
-<meta name="twitter:description" content="大忌！！！照本宣科！">
+<meta name="twitter:title" content="设计模式之原型模式">
+<meta name="twitter:description" content="原型模式的意图是通过复制一个现有的对象来生成新的对象，而不是通过实例化的方式。">
 
 
 
@@ -116,7 +116,7 @@
 
   <link rel="canonical" href="http://yoursite.com/2016/10/05/19.html"/>
 
-  <title> 数据结构详解之哈希表 | 付俊豪GitHub博客 </title>
+  <title> 设计模式之原型模式 | 付俊豪GitHub博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -259,7 +259,7 @@
             
             
               
-                数据结构详解之哈希表
+                设计模式之原型模式
               
             
           </h1>
@@ -318,8 +318,44 @@
       
 
       
-        <a id="more"></a>
-<p>大忌！！！照本宣科！</p>
+        <p>原型模式的意图是通过复制一个现有的对象来生成新的对象，而不是通过实例化的方式。</p>
+<a id="more"></a>
+<p>Java中利用克隆进行原型化:<br>    1、复制的机制：复制操作会提供原始对象属性的副本，还是副本与原始对象共享这些属性的值？</p>
+<p>示例代码：<br>public class Panel {</p>
+<pre><code>//属性
+private String color;
+
+private String backgroundColor;
+
+public String getColor() {
+    return color;
+}
+
+public void setColor(String color) {
+    this.color = color;
+}
+
+public String getBackgroundColor() {
+    return backgroundColor;
+}
+
+public void setBackgroundColor(String backgroundColor) {
+    this.backgroundColor = backgroundColor;
+}
+</code></pre><p>}</p>
+<p>//原型模式：不需要调用构造函数<br>public class OzPanel extends Panel implements Cloneable{</p>
+<pre><code>//不完善，默认复制了原始对象的所有属性，哪怕用不到某些属性
+public OzPanel copy1() throws CloneNotSupportedException{
+    return (OzPanel) this.clone();
+}
+
+//定制需要管理的属性
+public OzPanel copy2(){
+    OzPanel result=new OzPanel();
+    result.setColor(this.getColor());
+    return result;
+}
+</code></pre><p>}</p>
 
       
     </div>
@@ -352,6 +388,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/10/20.html" rel="prev" title="Java常用知识点总结-类加载机制">
+                Java常用知识点总结-类加载机制 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -419,7 +459,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
